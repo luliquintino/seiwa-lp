@@ -1,0 +1,1079 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Seiwa · Você cuida dos pacientes. A gente cuida do seu dinheiro.</title>
+<meta name="description" content="A Seiwa mostra, em português claro, quanto você já recebeu, o que ainda vem e como receber antes. Feito para médicos.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Inter+Tight:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#001C41;--navy-2:#062a5e;--teal:#00C5A8;--teal-bright:#00ECC9;--teal-light:#67F2DC;
+  --lime:#C5FF8D;--white:#fff;--ink:#001C41;--muted:#5a6b85;--line:rgba(0,28,65,.10);
+  --bg:#fff;--bg-soft:#f3f8fb;--bg-tint:#eafaf6;
+  --shadow-sm:0 2px 10px rgba(0,28,65,.06);--shadow:0 18px 50px rgba(0,28,65,.12);--shadow-lg:0 40px 90px rgba(0,28,65,.22);
+  --r:22px;--maxw:1180px;--font:'Inter',system-ui,sans-serif;--display:'Inter Tight','Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:var(--font);color:var(--ink);background:var(--bg);line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img,video{display:block;max-width:100%}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+section{position:relative}
+h1,h2,h3{font-family:var(--display);line-height:1.05;letter-spacing:-.02em;font-weight:800}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--teal)}
+.eyebrow::before{content:"";width:22px;height:2px;background:var(--teal);border-radius:2px}
+.lead{font-size:clamp(16px,1.6vw,19px);color:var(--muted);max-width:60ch}
+.btn{display:inline-flex;align-items:center;gap:9px;justify-content:center;font-weight:700;font-size:15px;border-radius:100px;padding:14px 24px;cursor:pointer;border:0;transition:.25s cubic-bezier(.2,.7,.2,1);white-space:nowrap}
+.btn svg{width:18px;height:18px}
+.btn-primary{background:var(--teal);color:var(--navy);box-shadow:0 10px 26px rgba(0,197,168,.4)}
+.btn-primary:hover{transform:translateY(-2px);background:var(--teal-bright);box-shadow:0 16px 34px rgba(0,197,168,.5)}
+.btn-ghost{background:rgba(255,255,255,.08);color:#fff;border:1px solid rgba(255,255,255,.25)}
+.btn-ghost:hover{background:rgba(255,255,255,.16);transform:translateY(-2px)}
+header.nav{position:fixed;top:0;left:0;right:0;z-index:100;transition:.3s;padding:16px 0}
+header.nav.scrolled{background:rgba(255,255,255,.82);backdrop-filter:blur(14px);box-shadow:0 1px 0 var(--line);padding:10px 0}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;gap:20px}
+.logo{font-family:var(--display);font-weight:800;font-size:25px;letter-spacing:-.03em;color:#fff;display:flex;align-items:center;gap:2px}
+.logo .wm{color:var(--teal-bright)}
+.scrolled .logo{color:var(--navy)}
+.nav-links{display:flex;gap:30px;align-items:center}
+.nav-links a{font-size:14.5px;font-weight:600;color:rgba(255,255,255,.82);transition:.2s}
+.nav-links a:hover{color:#fff}
+.scrolled .nav-links a{color:var(--muted)}.scrolled .nav-links a:hover{color:var(--navy)}
+.nav-cta{font-size:14px;padding:11px 20px}
+.scrolled .nav-cta.btn-ghost{background:var(--navy);color:#fff;border-color:var(--navy)}
+.burger{display:none;background:none;border:0;cursor:pointer;flex-direction:column;gap:5px;padding:8px}
+.burger span{width:24px;height:2px;background:#fff;border-radius:2px;transition:.2s}
+.scrolled .burger span{background:var(--navy)}
+.hero{background:radial-gradient(900px 600px at 78% 8%,rgba(0,236,201,.22),transparent 60%),radial-gradient(700px 600px at 8% 80%,rgba(197,255,141,.16),transparent 55%),linear-gradient(160deg,#001a3d 0%,#001028 60%,#000b1f 100%);color:#fff;padding:150px 0 90px;overflow:hidden}
+.hero::after{content:"";position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:54px 54px;-webkit-mask-image:radial-gradient(1000px 700px at 70% 20%,#000,transparent 75%);mask-image:radial-gradient(1000px 700px at 70% 20%,#000,transparent 75%)}
+.blob{position:absolute;border-radius:50%;filter:blur(60px);opacity:.5;animation:float 14s ease-in-out infinite}
+.blob.b1{width:380px;height:380px;background:var(--teal);top:-80px;right:-40px}
+.blob.b2{width:300px;height:300px;background:var(--lime);bottom:-120px;left:-60px;animation-delay:-5s;opacity:.32}
+@keyframes float{0%,100%{transform:translate(0,0)}50%{transform:translate(20px,-30px)}}
+.hero-grid{position:relative;z-index:2;display:grid;grid-template-columns:1.05fr .95fr;gap:54px;align-items:center}
+.badge{display:inline-flex;align-items:center;gap:9px;background:rgba(0,236,201,.12);border:1px solid rgba(0,236,201,.35);color:var(--teal-bright);font-weight:700;font-size:13.5px;padding:8px 15px;border-radius:100px;margin-bottom:24px}
+.badge .pulse{width:8px;height:8px;border-radius:50%;background:var(--teal-bright);animation:pulse 2s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(0,236,201,.55)}70%{box-shadow:0 0 0 11px rgba(0,236,201,0)}100%{box-shadow:0 0 0 0 rgba(0,236,201,0)}}
+.hero h1{font-size:clamp(40px,5.6vw,68px);font-weight:900;letter-spacing:-.035em}
+.hero h1 .hl{color:var(--teal-bright)}
+.hero p.sub{font-size:clamp(16px,1.7vw,19px);color:rgba(255,255,255,.8);margin:22px 0 30px;max-width:54ch}
+.hero-cta{display:flex;gap:14px;flex-wrap:wrap}
+.hero-chips{display:flex;gap:22px;margin-top:30px;flex-wrap:wrap}
+.hero-chips span{display:flex;align-items:center;gap:9px;font-size:14px;color:rgba(255,255,255,.72);font-weight:500}
+.hero-chips svg{width:18px;height:18px;color:var(--teal-bright)}
+.video-wrap{position:relative;justify-self:center}
+.video-frame{position:relative;width:min(330px,80vw);aspect-ratio:9/16;border-radius:30px;overflow:hidden;border:1px solid rgba(255,255,255,.16);box-shadow:var(--shadow-lg);background:#000}
+.video-frame video,.video-frame .video-embed{width:100%;height:100%;object-fit:cover;border:0;display:block}
+.video-glow{position:absolute;inset:-2px;border-radius:32px;background:linear-gradient(130deg,var(--teal-bright),transparent 40%,var(--lime));opacity:.5;filter:blur(22px);z-index:-1}
+.play-toggle{position:absolute;bottom:16px;right:16px;z-index:3;width:52px;height:52px;border-radius:50%;background:rgba(255,255,255,.92);border:0;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 22px rgba(0,0,0,.3);transition:.2s;color:var(--navy)}
+.play-toggle:hover{transform:scale(1.08)}
+.play-toggle svg{width:22px;height:22px;margin-left:2px}
+.float-card{position:absolute;background:#fff;color:var(--navy);border-radius:16px;padding:13px 16px;box-shadow:var(--shadow);display:flex;align-items:center;gap:11px;font-weight:700;font-size:14px}
+.float-card small{display:block;font-weight:600;color:var(--muted);font-size:11.5px}
+.float-card .ic{width:36px;height:36px;border-radius:11px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.fc-1{top:24px;left:-26px;animation:bob 5s ease-in-out infinite}
+.fc-2{bottom:30px;right:-30px;animation:bob 6s ease-in-out infinite -2s}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.s-pad{padding:96px 0}
+.s-head{max-width:680px;margin-bottom:48px}
+.s-head h2{font-size:clamp(30px,4vw,46px);margin:16px 0 16px}
+.s-head.center{margin-left:auto;margin-right:auto;text-align:center}
+.s-head.center .eyebrow{justify-content:center}
+.bg-soft{background:var(--bg-soft)}
+.feat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.feat-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:26px 24px;transition:.3s cubic-bezier(.2,.7,.2,1);position:relative;overflow:hidden}
+.feat-card::before{content:"";position:absolute;left:0;top:0;height:4px;width:100%;background:var(--teal);transform:scaleX(0);transform-origin:left;transition:.3s}
+.feat-card:hover{transform:translateY(-6px);box-shadow:var(--shadow);border-color:transparent}
+.feat-card:hover::before{transform:scaleX(1)}
+.feat-ic{width:50px;height:50px;border-radius:14px;display:flex;align-items:center;justify-content:center;background:var(--bg-tint);color:var(--teal);margin-bottom:18px}
+.feat-ic svg{width:25px;height:25px}
+.feat-card h3{font-size:19px;font-weight:700;margin-bottom:8px}
+.feat-card p{font-size:14.5px;color:var(--muted)}
+.step-layout{display:grid;grid-template-columns:.9fr 1.1fr;gap:48px;align-items:start}
+.step-nav{display:flex;flex-wrap:wrap;gap:10px}
+.step-pill{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--line);border-radius:100px;padding:9px 16px 9px 9px;cursor:pointer;transition:.22s;font-weight:600;font-size:14px;color:var(--muted)}
+.step-pill .n{width:28px;height:28px;border-radius:50%;background:var(--bg-tint);color:var(--teal);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;flex-shrink:0;transition:.22s;font-family:var(--display)}
+.step-pill:hover{border-color:var(--teal)}
+.step-pill.active{background:var(--navy);color:#fff;border-color:var(--navy)}
+.step-pill.active .n{background:var(--teal);color:var(--navy)}
+.step-panel{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:34px;min-height:230px;box-shadow:var(--shadow-sm);position:relative}
+.step-panel .big-n{font-family:var(--display);font-weight:900;font-size:64px;line-height:1;color:var(--bg-tint);position:absolute;top:24px;right:30px}
+.step-panel h3{font-size:25px;margin-bottom:12px}
+.step-panel p{font-size:16px;color:var(--muted);max-width:46ch}
+.step-progress{height:6px;background:var(--bg-tint);border-radius:6px;margin-top:26px;overflow:hidden}
+.step-progress span{display:block;height:100%;background:linear-gradient(90deg,var(--teal),var(--teal-bright));border-radius:6px;transition:.4s;width:12.5%}
+.once-note{margin-top:24px;background:linear-gradient(120deg,var(--bg-tint),#fff);border:1px dashed var(--teal);border-radius:16px;padding:18px 22px;display:flex;gap:14px;align-items:flex-start}
+.once-note svg{width:24px;height:24px;color:var(--teal);flex-shrink:0;margin-top:2px}
+.once-note b{color:var(--navy)}.once-note p{font-size:14.5px;color:var(--muted)}
+.timeline{position:relative;display:flex;margin:54px 0 34px}
+.tl-track{position:absolute;top:21px;left:12.5%;right:12.5%;height:3px;background:var(--teal-light);opacity:.5;border-radius:3px}
+.tl-progress{position:absolute;top:21px;left:12.5%;height:3px;background:var(--teal);border-radius:3px;width:0;transition:.45s cubic-bezier(.2,.7,.2,1)}
+.tl-node{flex:1;position:relative;z-index:2;background:none;border:0;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:12px;font:inherit;padding:0}
+.tl-node .circ{width:44px;height:44px;border-radius:50%;background:#fff;border:2px solid var(--teal-light);color:var(--teal);display:flex;align-items:center;justify-content:center;font-weight:800;font-family:var(--display);font-size:16px;transition:.25s}
+.tl-node.done .circ{background:var(--teal);border-color:var(--teal);color:#fff}
+.tl-node.active .circ{background:var(--teal);border-color:var(--teal);color:#fff;box-shadow:0 0 0 6px rgba(0,197,168,.18)}
+.tl-node:hover .circ{border-color:var(--teal)}
+.tl-node .lbl{font-size:13.5px;font-weight:600;color:var(--muted);transition:.2s;text-align:center}
+.tl-node.active .lbl{color:var(--navy);font-weight:700}
+.cad-panel{background:#fff;border:1px solid var(--line);border-radius:16px;padding:13px 18px;box-shadow:var(--shadow-sm);display:flex;align-items:center;gap:14px}
+.cad-num{width:38px;height:38px;flex-shrink:0;border-radius:10px;background:var(--bg-tint);color:var(--teal);font-family:var(--display);font-weight:800;font-size:17px;display:flex;align-items:center;justify-content:center}
+.cad-body{flex:1}
+.cad-body h3{font-size:16px;margin-bottom:2px}
+.cad-body p{color:var(--muted);font-size:13px;max-width:62ch;line-height:1.45}
+.cad-nav{display:flex;gap:9px;flex-shrink:0}
+.cad-nav button{width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--navy);transition:.2s}
+.cad-nav button:hover:not(:disabled){border-color:var(--teal);transform:translateY(-2px)}
+.cad-nav .next{background:var(--teal);border-color:var(--teal);color:var(--navy)}
+.cad-nav .next:hover:not(:disabled){background:var(--teal-bright)}
+.cad-nav button:disabled{opacity:.35;cursor:not-allowed}
+.cad-nav button svg{width:18px;height:18px}
+@media(max-width:680px){
+  .tl-node .lbl{font-size:11px}
+  .tl-node .circ{width:38px;height:38px;font-size:14px}
+  .tl-track,.tl-progress{top:18px}
+  .cad-panel{flex-wrap:wrap;gap:18px}
+  .cad-num{width:44px;height:44px;font-size:20px;border-radius:12px}
+  .cad-body{order:3;flex:1 1 100%}
+  .cad-nav{margin-left:auto}
+}
+.home-layout{display:grid;grid-template-columns:380px minmax(0,540px);gap:48px;align-items:center;justify-content:center}
+.home-layout .device{width:min(360px,86vw)}
+.phone{width:300px;margin:0 auto;background:var(--navy);border-radius:42px;padding:13px;box-shadow:var(--shadow-lg);position:relative;border:1px solid rgba(255,255,255,.1)}
+.phone::before{content:"";position:absolute;top:18px;left:50%;transform:translateX(-50%);width:90px;height:6px;background:rgba(255,255,255,.25);border-radius:6px;z-index:3}
+.phone-screen{background:var(--bg-soft);border-radius:32px;overflow:hidden;padding:34px 16px 20px}
+.phone-top{display:flex;justify-content:space-between;align-items:center;padding:0 6px 14px}
+.phone-top .hi{font-family:var(--display);font-weight:800;font-size:17px;color:var(--navy)}
+.phone-top .hi small{display:block;font-size:11px;color:var(--muted);font-weight:600}
+.phone-top .av{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,var(--teal),var(--lime))}
+.ind{background:#fff;border:1.5px solid transparent;border-radius:16px;padding:14px;margin-bottom:11px;cursor:pointer;display:flex;align-items:center;gap:13px;transition:.22s;box-shadow:var(--shadow-sm)}
+.ind:hover{transform:translateX(3px)}
+.ind.active{border-color:var(--teal);background:var(--bg-tint)}
+.ind .ic{width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:19px}
+.ind .txt small{display:block;font-size:11px;color:var(--muted);font-weight:600}
+.ind .txt b{font-size:15px;color:var(--navy);font-family:var(--display)}
+.ind .arrow{margin-left:auto;color:var(--teal);opacity:0;transform:translateX(-6px);transition:.2s}
+.ind.active .arrow{opacity:1;transform:translateX(0)}
+.ind .arrow svg{width:18px;height:18px}
+.home-answers{position:relative}
+.answer{display:none;animation:fade .4s ease}
+.answer.active{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.answer .q{font-family:var(--display);font-size:clamp(24px,3vw,34px);font-weight:800;margin-bottom:14px;color:var(--navy)}
+.answer .tag{display:inline-flex;align-items:center;gap:8px;background:var(--bg-tint);color:var(--teal);font-weight:700;font-size:13px;padding:7px 14px;border-radius:100px;margin-bottom:16px}
+.answer p{font-size:17px;color:var(--muted);max-width:42ch}
+.home-hint{margin-top:22px;font-size:14px;color:var(--muted);display:flex;align-items:center;gap:8px}
+.home-hint svg{width:17px;height:17px;color:var(--teal)}
+.tabs{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:34px;justify-content:center}
+.tab{background:#fff;border:1px solid var(--line);border-radius:100px;padding:12px 22px;cursor:pointer;font-weight:700;font-size:14.5px;color:var(--muted);transition:.22s}
+.tab:hover{border-color:var(--teal);color:var(--navy)}
+.tab.active{background:var(--navy);color:#fff;border-color:var(--navy)}
+.tab-panel{display:none}
+.tab-panel.active{display:block;animation:fade .4s ease}
+.tp-grid{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:28px;padding:42px;box-shadow:var(--shadow-sm)}
+.tp-grid h3{font-size:clamp(26px,3vw,36px);margin-bottom:8px}
+.tp-tagline{color:var(--teal);font-weight:700;font-size:16px;margin-bottom:26px}
+.tp-steps{display:flex;flex-direction:column;gap:8px}
+.tp-step{display:flex;gap:15px;align-items:flex-start;cursor:pointer;border-radius:13px;padding:10px;margin:-2px 0;transition:background .2s}
+.tp-step .n{width:30px;height:30px;border-radius:9px;background:var(--bg-tint);color:var(--teal);font-weight:800;font-family:var(--display);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:14px;transition:.2s}
+.tp-step b{font-size:15.5px;color:var(--navy)}
+.tp-step p{font-size:14px;color:var(--muted)}
+.tp-step.hot{background:var(--bg-tint)}
+.tp-step.hot .n{background:var(--teal);color:#fff;transform:scale(1.06)}
+.pin{position:absolute;left:11%;width:30px;height:30px;border-radius:50%;background:var(--teal);color:var(--navy);font-weight:800;font-family:var(--display);font-size:14px;display:flex;align-items:center;justify-content:center;border:3px solid #fff;box-shadow:0 4px 12px rgba(0,28,65,.3);z-index:3;transform:translate(-50%,-50%);transition:.35s cubic-bezier(.2,.7,.2,1)}
+.pin.active{background:var(--navy);color:var(--teal-bright);transform:translate(-50%,-50%) scale(1.32);box-shadow:0 0 0 6px rgba(0,197,168,.22),0 6px 16px rgba(0,28,65,.3)}
+.acct-screen{position:absolute;inset:0;z-index:5;background:#eef1f4;display:none;flex-direction:column;padding:16px 13px;overflow:hidden;text-align:left;animation:fade .4s ease}
+.scr.show-acct .acct-screen{display:flex}
+.scr.show-acct .pin:not(.acct-pin){opacity:0;pointer-events:none}
+.acct-h{font-family:var(--display);font-weight:800;font-size:15px;color:var(--navy);padding-left:9px;border-left:4px solid var(--teal);margin-bottom:11px}
+.acct-card{background:#fff;border-radius:12px;padding:11px 12px;margin-bottom:13px}
+.acct-card b{display:block;font-size:12.5px;color:var(--navy);font-family:var(--display);margin-bottom:4px}
+.acct-card p{font-size:10.5px;color:var(--muted);line-height:1.4}
+.acct-how{font-family:var(--display);font-weight:800;font-size:13px;color:var(--navy);margin-bottom:9px}
+.acct-step{display:flex;gap:9px;margin-bottom:9px}
+.acct-step .sn{width:21px;height:21px;border-radius:50%;background:var(--teal);color:#fff;font-size:10.5px;font-weight:800;font-family:var(--display);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.acct-step b{display:block;font-size:11.5px;color:var(--navy);font-family:var(--display)}
+.acct-step p{font-size:10px;color:var(--muted);line-height:1.3}
+.acct-note{background:#e3f6ee;border-radius:12px;padding:11px;display:flex;gap:9px;margin-top:auto}
+.acct-note .ic{font-size:17px;line-height:1}
+.acct-note b{display:block;font-size:11.5px;color:var(--teal);font-family:var(--display);margin-bottom:3px}
+.acct-note p{font-size:10px;color:var(--muted);line-height:1.35;margin-bottom:8px}
+.acct-btn{background:var(--teal);color:var(--navy);border:0;border-radius:100px;padding:7px 13px;font-weight:800;font-size:10.5px;cursor:pointer}
+.acct-btn-wrap{position:relative;display:inline-block;margin-top:2px}
+.acct-pin{left:0;top:50%;transform:translate(-50%,-50%) scale(1.12);background:var(--navy);color:var(--teal-bright);box-shadow:0 0 0 6px rgba(0,197,168,.22),0 6px 16px rgba(0,28,65,.35)}
+.tp-feel{margin-top:26px;display:inline-flex;align-items:center;gap:10px;background:var(--navy);color:#fff;border-radius:100px;padding:11px 20px;font-weight:600;font-size:14.5px}
+.tp-feel b{color:var(--lime)}
+.step-badge{display:inline-block;font-size:10.5px;font-weight:800;color:var(--teal);background:var(--bg-tint);border-radius:100px;padding:3px 10px;margin-left:8px;vertical-align:middle;letter-spacing:.04em;text-transform:uppercase}
+.tip-box{margin-top:22px;display:flex;gap:13px;align-items:flex-start;background:linear-gradient(120deg,var(--bg-tint),#fff);border:1px solid rgba(0,197,168,.32);border-radius:16px;padding:16px 18px}
+.tip-box .ic{flex-shrink:0;width:38px;height:38px;border-radius:11px;background:var(--teal);color:var(--navy);display:flex;align-items:center;justify-content:center}
+.tip-box .ic svg{width:21px;height:21px}
+.tip-box p{font-size:14px;color:var(--muted);margin:0}
+.tip-box b{color:var(--navy)}
+.tp-visual{background:linear-gradient(150deg,var(--bg-tint),#fff);border-radius:22px;padding:26px;border:1px solid var(--line)}
+.mini-row{background:#fff;border-radius:13px;padding:13px 15px;margin-bottom:10px;box-shadow:var(--shadow-sm);display:flex;align-items:center;justify-content:space-between}
+.mini-row:last-child{margin-bottom:0}
+.mini-row .l{display:flex;align-items:center;gap:11px}
+.mini-row .dot{width:38px;height:38px;border-radius:10px;background:var(--bg-tint);display:flex;align-items:center;justify-content:center;font-size:17px}
+.mini-row .l small{display:block;font-size:11px;color:var(--muted);font-weight:600}
+.mini-row .l b{font-size:14px;color:var(--navy);font-family:var(--display)}
+.mini-row .v{font-weight:800;font-family:var(--display);font-size:15px}
+.v.pos{color:var(--teal)}.v.neg{color:#e2574c}
+.spark{display:flex;align-items:flex-end;gap:6px;height:64px;margin-bottom:16px}
+.spark span{flex:1;background:linear-gradient(var(--teal-bright),var(--teal));border-radius:4px 4px 0 0;opacity:.85}
+.cases{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.case{background:#fff;border:1px solid var(--line);border-radius:24px;padding:28px;transition:.3s cubic-bezier(.2,.7,.2,1);position:relative;overflow:hidden}
+.case:hover{box-shadow:var(--shadow);transform:translateY(-4px)}
+.case .role{font-size:12.5px;font-weight:700;color:var(--teal);letter-spacing:.04em;text-transform:uppercase;margin-bottom:12px}
+.case h3{font-size:21px;font-weight:800;margin-bottom:14px}
+.case .money{display:flex;align-items:baseline;gap:10px;margin-bottom:8px}
+.case .money .big{font-family:var(--display);font-weight:900;font-size:34px;color:var(--navy)}
+.case .money .old{font-size:15px;color:var(--muted);text-decoration:line-through}
+.case .money-label{font-size:13px;color:var(--muted);margin-bottom:16px}
+.case-detail{max-height:0;overflow:hidden;transition:max-height .45s ease}
+.case.resolve-open .case-detail{max-height:640px}
+.case-btn{display:inline-flex;align-items:center;gap:7px;background:none;border:0;cursor:pointer;color:var(--teal);font-weight:700;font-size:14px;font-family:var(--font);padding:0;margin-top:8px}
+.case-btn svg{width:16px;height:16px;transition:.3s}
+.case.story-open .case-btn[data-stage=story] svg{transform:rotate(180deg)}
+.case.resolve-open .case-btn[data-stage=resolve] svg{transform:rotate(180deg)}
+.case-story{max-height:0;overflow:hidden;transition:max-height .45s ease}
+.case.story-open .case-story{max-height:340px}
+.case-story p{font-size:14px;color:var(--muted);border-top:1px solid var(--line);padding-top:15px;margin-top:14px;margin-bottom:6px;line-height:1.55}
+.case-steps{border-top:1px solid var(--line);padding-top:18px;margin-top:4px}
+.case-steps .cs{display:flex;gap:12px;margin-bottom:14px;align-items:flex-start}
+.case-steps .cs .n{width:24px;height:24px;border-radius:50%;background:var(--navy);color:#fff;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:var(--display)}
+.case-steps .cs p{font-size:13.5px;color:var(--muted)}
+.case-steps .cs b{color:var(--navy)}
+.case-resolve{display:inline-flex;align-items:center;gap:8px;background:var(--bg-tint);color:var(--teal);font-weight:700;font-size:13px;padding:8px 14px;border-radius:100px}
+.case-toggle{display:flex;align-items:center;gap:7px;color:var(--teal);font-weight:700;font-size:14px;margin-top:4px}
+.case-toggle svg{width:16px;height:16px;transition:.3s}
+.case.open .case-toggle svg{transform:rotate(180deg)}
+.faq{max-width:820px;margin:0 auto;display:flex;flex-direction:column;gap:12px}
+.faq-item{background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;transition:.2s}
+.faq-item.open{border-color:var(--teal);box-shadow:var(--shadow-sm)}
+.faq-q{width:100%;text-align:left;background:none;border:0;cursor:pointer;padding:20px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;font-weight:700;font-size:16.5px;color:var(--navy);font-family:var(--display)}
+.faq-q .plus{width:26px;height:26px;flex-shrink:0;position:relative}
+.faq-q .plus::before,.faq-q .plus::after{content:"";position:absolute;background:var(--teal);border-radius:2px;transition:.3s}
+.faq-q .plus::before{width:14px;height:2.5px;top:12px;left:6px}
+.faq-q .plus::after{width:2.5px;height:14px;top:6px;left:12px}
+.faq-item.open .plus::after{transform:rotate(90deg);opacity:0}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.faq-item.open .faq-a{max-height:340px}
+.faq-sub{max-width:820px;margin:46px auto 18px;text-align:center}
+.faq-sub .eyebrow{justify-content:center}
+.faq-sub h3{font-size:clamp(22px,2.6vw,30px);margin:14px 0 12px}
+.faq-sub p{color:var(--muted);font-size:16px;max-width:60ch;margin:0 auto}
+.faq-sub p b{color:var(--navy)}
+.faq-foot{max-width:820px;margin:18px auto 0;text-align:center;color:var(--muted);font-size:14.5px}
+.faq-foot a{color:var(--teal);font-weight:700}
+.faq-a p{padding:0 24px 22px;color:var(--muted);font-size:15px}
+.faq-a .pill{color:var(--teal);font-weight:700}
+.why{background:linear-gradient(160deg,#001a3d,#000b1f);color:#fff;border-radius:36px;padding:64px;position:relative;overflow:hidden}
+.why::after{content:"";position:absolute;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(0,236,201,.3),transparent 70%);top:-120px;right:-80px}
+.why-grid{position:relative;z-index:2;display:grid;grid-template-columns:repeat(3,1fr);gap:30px;margin:42px 0 50px}
+.why-card .ic{width:48px;height:48px;border-radius:14px;background:rgba(0,236,201,.14);display:flex;align-items:center;justify-content:center;color:var(--teal-bright);margin-bottom:16px}
+.why-card .ic svg{width:24px;height:24px}
+.why-card h3{font-size:20px;margin-bottom:8px}
+.why-card p{font-size:14.5px;color:rgba(255,255,255,.72)}
+.why h2{font-size:clamp(30px,4vw,46px);position:relative;z-index:2}
+.why .eyebrow{color:var(--teal-bright)}.why .eyebrow::before{background:var(--teal-bright)}
+.support{position:relative;z-index:2;display:flex;flex-wrap:wrap;gap:14px;align-items:center;padding-top:34px;border-top:1px solid rgba(255,255,255,.12)}
+.support .lbl{font-size:13px;text-transform:uppercase;letter-spacing:.12em;color:rgba(255,255,255,.55);font-weight:700;margin-right:6px}
+.support a{display:inline-flex;align-items:center;gap:9px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.18);border-radius:100px;padding:11px 18px;font-weight:600;font-size:14.5px;transition:.2s}
+.support a:hover{background:rgba(255,255,255,.14);transform:translateY(-2px)}
+.support a svg{width:18px;height:18px;color:var(--teal-bright)}
+footer{padding:50px 0 40px;text-align:center;color:var(--muted)}
+.footer-logo{font-family:var(--display);font-weight:800;font-size:30px;color:var(--teal-bright);letter-spacing:-.03em;margin-bottom:10px}
+.footer-logo .dot{color:var(--teal)}
+footer p{font-size:14px;max-width:42ch;margin:0 auto 6px}
+.footer-slogan{color:var(--navy);font-weight:600}
+.brand-logo{height:30px;width:auto;display:block}
+.footer-logo-img{height:46px;width:auto;margin:0 auto 14px;display:block}
+.device{width:288px;margin:0 auto;background:var(--navy);border-radius:38px;padding:3px;box-shadow:var(--shadow-lg)}
+.device .scr{position:relative;border-radius:35px;overflow:hidden;background:#eef1f4}
+.hl-box{position:absolute;left:5%;right:5%;border:2.5px solid var(--teal);border-radius:14px;background:rgba(0,197,168,.10);box-shadow:0 0 0 4px rgba(0,197,168,.12),0 10px 24px rgba(0,197,168,.22);opacity:0;transition:top .5s cubic-bezier(.2,.7,.2,1),height .5s cubic-bezier(.2,.7,.2,1),opacity .3s;pointer-events:none;z-index:2}
+.hl-box.show{opacity:1}
+.device .scr img{display:block;width:100%;height:auto}
+.qtabs{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:24px}
+.qtab{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);border-radius:100px;padding:10px 16px;cursor:pointer;font-weight:700;font-size:14px;color:var(--muted);transition:.22s}
+.qtab:hover{border-color:var(--teal);color:var(--navy)}
+.qtab.active{background:var(--navy);color:#fff;border-color:var(--navy)}
+.home-q{display:flex;flex-direction:column;gap:8px}
+.hq-group{font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:10px 2px 0}
+.hq-group:first-child{margin-top:0}
+.hq-item{border:1px solid var(--line);border-radius:14px;background:#fff;overflow:hidden;transition:.25s}
+.hq-item.open{border-color:var(--teal);box-shadow:var(--shadow-sm)}
+.hq-head{width:100%;background:none;border:0;cursor:pointer;display:flex;align-items:center;gap:12px;padding:11px 15px;text-align:left;font:inherit}
+.hq-ic{width:38px;height:38px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0}
+.hq-main{flex:1;min-width:0}
+.hq-main small{display:block;font-size:11px;color:var(--teal);font-weight:700;letter-spacing:.01em}
+.hq-main b{font-size:15px;color:var(--navy);font-family:var(--display)}
+.hq-chev{color:var(--muted);transition:.3s;flex-shrink:0;display:flex}
+.hq-chev svg{width:19px;height:19px}
+.hq-item.open .hq-chev{transform:rotate(180deg);color:var(--teal)}
+.hq-body{max-height:0;overflow:hidden;transition:max-height .4s ease}
+.hq-item.open .hq-body{max-height:200px}
+.hq-body p{padding:0 16px 14px 65px;color:var(--muted);font-size:13.5px;line-height:1.5}
+@media(max-width:560px){.hq-body p{padding:0 16px 14px}}
+.home-alt{position:absolute;inset:0;z-index:6;background:#eef1f4;display:none;flex-direction:column;padding:16px 13px;overflow:hidden;text-align:left;animation:fade .4s ease}
+.home-alt.show{display:flex}
+.scr.alt-on>img{visibility:hidden}
+.scr.alt-on .hl-box{opacity:0}
+.alt-h{font-family:var(--display);font-weight:800;font-size:14px;color:var(--navy);margin-bottom:12px}
+.menu-top{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:9px}
+.menu-wide{background:#fff;border-radius:14px;padding:13px 12px;display:flex;align-items:center;gap:10px;font-size:12.5px;font-weight:700;color:var(--navy);font-family:var(--display)}
+.menu-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
+.menu-tile{background:#fff;border-radius:14px;padding:13px 9px;display:flex;flex-direction:column;align-items:flex-start;gap:10px;font-size:10.5px;font-weight:700;color:var(--navy);font-family:var(--display);line-height:1.2}
+.mt-ic{width:34px;height:34px;border-radius:10px;background:var(--bg-tint);display:flex;align-items:center;justify-content:center;color:var(--teal);flex-shrink:0}
+.mt-ic svg{width:19px;height:19px}
+.recv{display:flex;gap:11px;padding-bottom:14px;position:relative}
+.recv-dot{width:15px;height:15px;border-radius:50%;background:var(--teal);box-shadow:0 0 0 3px rgba(0,197,168,.18);flex-shrink:0;margin-top:3px;z-index:2}
+.recv:not(:last-child)::before{content:"";position:absolute;left:7px;top:16px;bottom:0;width:2px;background:var(--teal-light);opacity:.5}
+.recv-b b{display:block;font-size:13px;color:var(--navy);font-family:var(--display)}
+.recv-b small{display:block;font-size:11px;color:var(--muted)}
+.recv-v{display:block;font-size:14px;font-weight:800;color:var(--navy);font-family:var(--display);margin:2px 0}
+.recv-link{font-size:11px;color:var(--teal);font-weight:700}
+.recv-more{text-align:center;font-size:12px;font-weight:700;color:var(--navy);font-family:var(--display);border-top:1px solid var(--line);padding-top:11px;margin-top:2px}
+.acb{padding:14px 13px;text-align:left;font-family:var(--font)}
+.acb-title{font-family:var(--display);font-weight:800;font-size:15px;color:var(--navy);text-align:center;margin-bottom:12px}
+.acb-hero{background:linear-gradient(150deg,#06243f,#04111f);border-radius:16px;padding:14px;color:#fff;margin-bottom:14px}
+.acb-hrow{display:flex;justify-content:space-between;align-items:center}
+.acb-cap{font-size:9.5px;font-weight:700;letter-spacing:.1em;color:rgba(255,255,255,.6)}
+.acb-ok{font-size:10px;font-weight:700;color:var(--teal-bright);background:rgba(0,236,201,.14);border-radius:100px;padding:3px 8px}
+.acb-val{font-family:var(--display);font-weight:900;font-size:14px;color:rgba(255,255,255,.55);margin:8px 0}
+.acb-val b{font-size:30px;color:#fff}
+.acb-val small{font-size:14px;color:rgba(255,255,255,.55)}
+.acb-bar{height:7px;border-radius:7px;background:rgba(255,255,255,.15);overflow:hidden;margin:4px 0 8px}
+.acb-bar i{display:block;height:100%;width:33%;background:var(--teal);border-radius:7px}
+.acb-foot{font-size:10px;color:rgba(255,255,255,.7)}
+.acb-foot b{color:#fff}
+.acb-cap2{font-size:9.5px;font-weight:700;letter-spacing:.1em;color:var(--muted);margin-bottom:8px}
+.acb-h2{font-family:var(--display);font-weight:800;font-size:14px;color:var(--navy);margin:14px 0 8px}
+.acb-next{background:#fff;border-radius:13px;padding:11px;display:flex;gap:11px;align-items:center;box-shadow:var(--shadow-sm);margin-bottom:13px}
+.acb-date{background:#fdebc8;border-radius:10px;padding:6px 10px;text-align:center;flex-shrink:0}
+.acb-date b{display:block;font-family:var(--display);font-weight:800;font-size:18px;color:#b9791a;line-height:1}
+.acb-date small{font-size:8.5px;font-weight:700;color:#b9791a;letter-spacing:.05em}
+.acb-due{font-size:12px;font-weight:700;color:#c98a16}
+.acb-nsub{font-size:10px;color:var(--muted)}
+.acb-namt{font-family:var(--display);font-weight:800;font-size:14px;color:var(--navy)}
+.acb-link{background:#fff;border-radius:11px;padding:10px;text-align:center;font-size:11.5px;font-weight:700;color:var(--teal);box-shadow:var(--shadow-sm);margin-bottom:6px}
+.acb-chips{display:flex;gap:6px;margin-bottom:10px}
+.acb-chips span{font-size:10px;font-weight:700;padding:5px 11px;border-radius:100px;background:#fff;color:var(--muted);border:1px solid var(--line)}
+.acb-chips .on{background:var(--navy);color:#fff;border-color:var(--navy)}
+.acb-item{background:#fff;border-radius:12px;padding:10px;display:flex;align-items:center;gap:9px;box-shadow:var(--shadow-sm);margin-bottom:8px}
+.acb-iic{width:30px;height:30px;border-radius:9px;background:var(--bg-tint);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0}
+.acb-ib{flex:1;min-width:0}
+.acb-ib b{display:block;font-size:11.5px;color:var(--navy);font-family:var(--display)}
+.acb-ib small{font-size:9.5px;color:var(--muted)}
+.acb-iv{text-align:right;font-family:var(--display);font-weight:800;font-size:12px;color:var(--navy)}
+.acb-iv em{display:block;font-style:normal;font-size:9px;font-weight:700;color:#c98a16;background:#fdebc8;border-radius:100px;padding:2px 7px;margin-top:3px}
+.disp{margin-top:34px;padding-top:30px;border-top:1px solid rgba(255,255,255,.12);position:relative;z-index:2;display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.disp .lbl{font-size:13px;text-transform:uppercase;letter-spacing:.12em;color:rgba(255,255,255,.55);font-weight:700}
+.store-badges{display:flex;gap:13px;flex-wrap:wrap;align-items:center}
+.store-badges .store{display:inline-flex;align-items:center;gap:11px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.2);border-radius:14px;padding:9px 18px;color:#fff;transition:.25s cubic-bezier(.2,.7,.2,1)}
+.store-badges .store:hover{background:rgba(255,255,255,.14);border-color:rgba(0,236,201,.55);transform:translateY(-3px)}
+.store-badges .store svg{width:24px;height:24px;flex-shrink:0}
+.store-badges .st-txt{display:flex;flex-direction:column;line-height:1.12;text-align:left}
+.store-badges .st-txt small{font-size:10px;opacity:.78;font-weight:500;letter-spacing:.03em}
+.store-badges .st-txt b{font-size:16px;font-weight:700;font-family:var(--display);letter-spacing:-.01em}
+.reveal{opacity:0;transform:translateY(28px);transition:.7s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+.reveal.d1{transition-delay:.08s}.reveal.d2{transition-delay:.16s}.reveal.d3{transition-delay:.24s}.reveal.d4{transition-delay:.32s}
+@media(max-width:980px){
+  .hero-grid,.home-layout,.step-layout,.tp-grid,.why-grid{grid-template-columns:1fr}
+  .feat-grid{grid-template-columns:repeat(2,1fr)}
+  .cases{grid-template-columns:1fr}
+  .nav-links{display:none}.burger{display:flex}
+  .nav-links.open{display:flex;position:absolute;top:64px;left:16px;right:16px;flex-direction:column;background:#fff;padding:18px;border-radius:18px;box-shadow:var(--shadow);gap:16px}
+  .nav-links.open a{color:var(--navy)}
+  .why{padding:40px 26px}.hero{padding:130px 0 70px}
+  .video-wrap{order:-1}.float-card{display:none}.home-layout .phone{order:-1}
+}
+@media(max-width:560px){.feat-grid{grid-template-columns:1fr}.tp-grid{padding:24px}.s-pad{padding:70px 0}.why-grid{margin:30px 0 36px}}
+/* ===== Movimento & efeitos ===== */
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+  html{scroll-behavior:auto}
+  .blob,.particle{display:none!important}
+}
+.scroll-prog{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--teal),var(--lime));z-index:200;box-shadow:0 0 12px rgba(0,236,201,.7);transition:width .12s ease-out}
+.to-top{position:fixed;bottom:26px;right:26px;width:50px;height:50px;border-radius:50%;background:var(--navy);color:var(--teal-bright);border:0;cursor:pointer;font-size:23px;font-weight:700;display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow);opacity:0;transform:translateY(20px) scale(.8);pointer-events:none;transition:.35s cubic-bezier(.2,.7,.2,1);z-index:150}
+.to-top.show{opacity:1;transform:none;pointer-events:auto}
+.to-top:hover{background:var(--teal);color:var(--navy);transform:translateY(-4px)}
+.btn-primary{position:relative;overflow:hidden}
+.btn-primary::after{content:"";position:absolute;top:-50%;left:-130%;width:55%;height:200%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.5),transparent);transform:skewX(-20deg);transition:left .65s ease;pointer-events:none}
+.btn-primary:hover::after{left:140%}
+.particle{position:absolute;bottom:-6px;border-radius:50%;background:rgba(0,236,201,.55);pointer-events:none;z-index:1;animation:drift linear infinite}
+@keyframes drift{0%{transform:translateY(0) scale(1);opacity:0}15%{opacity:.6}85%{opacity:.35}100%{transform:translateY(-620px) scale(.55);opacity:0}}
+.video-glow{animation:glowpulse 4.5s ease-in-out infinite}
+@keyframes glowpulse{0%,100%{opacity:.4}50%{opacity:.72}}
+.case::after{content:"";position:absolute;inset:0;background:radial-gradient(200px circle at var(--mx,50%) var(--my,50%),rgba(0,197,168,.12),transparent 65%);opacity:0;transition:opacity .35s;pointer-events:none}
+.case:hover::after{opacity:1}
+.case:hover{box-shadow:0 22px 55px rgba(0,28,65,.15),0 0 0 1px rgba(0,197,168,.25);transform:translateY(-6px)}
+.why-card{transition:.35s cubic-bezier(.2,.7,.2,1);position:relative}
+.why-card .ic{transition:.35s cubic-bezier(.2,.7,.2,1)}
+.why-card:hover{transform:translateY(-5px)}
+.why-card:hover .ic{transform:scale(1.12) rotate(-6deg)}
+.faq-item:hover,.hq-item:hover{border-color:rgba(0,197,168,.45)}
+.hq-ic{transition:transform .3s cubic-bezier(.2,.7,.2,1)}
+.hq-item:hover .hq-ic{transform:scale(1.08)}
+.eyebrow::before{transition:width .5s ease}
+.s-head.in .eyebrow::before{animation:barpop .6s ease}
+@keyframes barpop{0%{width:0}100%{width:22px}}
+/* Hero sem vídeo (temporário, até ter o link) */
+.hero.no-vid .video-wrap{display:none}
+.hero.no-vid .hero-grid{grid-template-columns:1fr;max-width:780px;margin:0 auto;text-align:center}
+.hero.no-vid .hero-copy .sub{margin-left:auto;margin-right:auto}
+.hero.no-vid .hero-cta,.hero.no-vid .hero-chips{justify-content:center}
+/* Modo incorporado (iframe Full Width no WordPress) */
+.embedded header.nav{display:none}
+.embedded .hero{padding-top:84px}
+.embedded footer{display:none}
+</style>
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <div class="wrap nav-inner">
+    <a href="#top" class="logo"><img src="assets/logo.png" alt="Seiwa" class="brand-logo"><span class="wm">seiwa</span></a>
+    <nav class="nav-links" id="navLinks">
+      <a href="#cadastro">Como usar</a>
+      <a href="#funcionalidades">Funcionalidades</a>
+      <a href="#historias">Histórias</a>
+      <a href="#duvidas">Dúvidas</a>
+    </nav>
+    <a href="https://wa.me/5531992086044" target="_blank" rel="noopener" class="btn btn-ghost nav-cta">Falar com a Seiwa</a>
+    <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<section class="hero no-vid" id="top">
+  <span class="blob b1"></span><span class="blob b2"></span>
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <span class="badge reveal in"><span class="pulse"></span>Novo · Lançamento 2026</span>
+      <h1 class="reveal in d1">Bem-vindo à <span class="hl">Seiwa</span></h1>
+      <p class="sub reveal in d2">Você cuida dos seus pacientes. A gente cuida do seu dinheiro, mostrando em português claro quanto você já recebeu, o que ainda vem e como receber antes.</p>
+      <div class="hero-cta reveal in d3">
+        <a href="#porque" class="btn btn-primary">Baixar o app</a>
+        <a href="#cadastro" class="btn btn-ghost">Ver como funciona
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+      <div class="hero-chips reveal in d4">
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Feito para médicos</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>5 min para entender tudo</span>
+      </div>
+    </div>
+    <div class="video-wrap reveal in d2">
+      <div class="video-frame">
+        <span class="video-glow"></span>
+        <!-- VÍDEO: cole aqui o iframe do Vimeo/YouTube quando tiver o link, e remova a classe "no-vid" do <section class="hero ..."> -->
+        <!-- <iframe class="video-embed" src="https://player.vimeo.com/video/VIMEO_ID?background=1&amp;autoplay=1&amp;loop=1&amp;muted=1" title="Seiwa" allow="autoplay; fullscreen; picture-in-picture" frameborder="0"></iframe> -->
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="s-pad bg-soft" id="cadastro">
+  <div class="wrap">
+    <div class="s-head reveal">
+      <span class="eyebrow">Primeiro acesso</span>
+      <h2>Seu cadastro em 4 passos</h2>
+      <p class="lead">É uma vez só. Depois, sempre que abrir a Seiwa seus pagamentos já estarão atualizados, sem refazer nada.</p>
+    </div>
+    <div class="timeline reveal">
+      <span class="tl-track"></span>
+      <span class="tl-progress" id="tlProgress"></span>
+      <button class="tl-node active" data-step="0"><span class="circ">1</span><span class="lbl">Identificação</span></button>
+      <button class="tl-node" data-step="1"><span class="circ">2</span><span class="lbl">Dados de PJ</span></button>
+      <button class="tl-node" data-step="2"><span class="circ">3</span><span class="lbl">Conta bancária</span></button>
+      <button class="tl-node" data-step="3"><span class="circ">4</span><span class="lbl">Suas fontes</span></button>
+    </div>
+    <div class="cad-panel reveal d1">
+      <span class="cad-num" id="stepBigN">1</span>
+      <div class="cad-body">
+        <h3 id="stepTitle">Identificação</h3>
+        <p id="stepDesc">Telefone e CPF criam a chave única da sua conta, o ponto de partida.</p>
+      </div>
+      <div class="cad-nav">
+        <button class="prev" id="stepPrev" aria-label="Passo anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M15 6l-6 6 6 6"/></svg></button>
+        <button class="next" id="stepNext" aria-label="Próximo passo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M9 6l6 6-6 6"/></svg></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="s-pad" id="home">
+  <div class="wrap">
+    <div class="s-head reveal">
+      <span class="eyebrow">Tela inicial</span>
+      <h2>A home já responde tudo</h2>
+      <p class="lead">A primeira tela responde as perguntas que você mais faz sobre o seu dinheiro. Toque num indicador.</p>
+    </div>
+    <div class="home-layout">
+      <div class="device reveal"><div class="scr" id="homeScr">
+        <img src="assets/home.png" alt="Tela inicial do app Seiwa com os indicadores de repasses, glosas, saldo e antecipação">
+        <span class="hl-box" id="hl"></span>
+        <div class="home-alt" id="screenMenu">
+          <div class="alt-h">Tudo que você pode fazer na Seiwa</div>
+          <div class="menu-top">
+            <div class="menu-wide"><span class="mt-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg></span>Painel Geral</div>
+            <div class="menu-wide"><span class="mt-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M19 5a9 9 0 0 1 0 14"/></svg></span>Chamados</div>
+          </div>
+          <div class="menu-grid">
+            <div class="menu-tile"><span class="mt-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M12 12v5M9.5 14.5h5"/></svg></span>Envio de NF</div>
+            <div class="menu-tile"><span class="mt-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.2a2.6 2.6 0 0 1 4.6 1.6c0 1.6-2.1 2-2.1 3.2"/><path d="M12 17h.01"/></svg></span>Suporte</div>
+            <div class="menu-tile"><span class="mt-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h4"/></svg></span>Suas fontes</div>
+            <div class="menu-tile"><span class="mt-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.6 5.3 5.8.8-4.2 4.1 1 5.8L12 16.8 6.8 19l1-5.8L3.6 9.1l5.8-.8z"/></svg></span>Feedbacks</div>
+            <div class="menu-tile"><span class="mt-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M5 21a7 7 0 0 1 14 0"/></svg></span>Perfil</div>
+            <div class="menu-tile"><span class="mt-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 9h18M8 3v4M16 3v4"/></svg></span>Antecipações</div>
+          </div>
+        </div>
+        <div class="home-alt" id="screenRecebimentos">
+          <div class="alt-h">Últimos repasses recebidos</div>
+          <div class="recv-list">
+            <div class="recv"><span class="recv-dot"></span><div class="recv-b"><b>Maternidade Curitiba</b><small>Repassado em 12/02/2026</small><span class="recv-v">R$ 28.595,00</span><span class="recv-link">Ver repasse</span></div></div>
+            <div class="recv"><span class="recv-dot"></span><div class="recv-b"><b>Maternidade Curitiba</b><small>Repassado em 12/02/2026</small><span class="recv-v">R$ 19.257,00</span><span class="recv-link">Ver repasse</span></div></div>
+            <div class="recv"><span class="recv-dot"></span><div class="recv-b"><b>Hospital Sírio Libanês</b><small>Repassado em 09/02/2026</small><span class="recv-v">R$ 51.025,00</span><span class="recv-link">Ver repasse</span></div></div>
+            <div class="recv"><span class="recv-dot"></span><div class="recv-b"><b>Hospital Santa Cruz</b><small>Repassado em 05/02/2026</small><span class="recv-v">R$ 9.595,00</span><span class="recv-link">Ver repasse</span></div></div>
+          </div>
+          <div class="recv-more">Ver mais ⌄</div>
+        </div>
+      </div></div>
+      <div class="home-q reveal d1">
+        <div class="hq-group">Sobre o seu dinheiro</div>
+        <div class="hq-item open" data-top="47" data-h="13">
+          <button class="hq-head">
+            <span class="hq-ic" style="background:#eafaf6;color:var(--teal)">💰</span>
+            <span class="hq-main"><small>Repasses recebidos</small><b>"Quanto eu já recebi?"</b></span>
+            <span class="hq-chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M6 9l6 6 6-6"/></svg></span>
+          </button>
+          <div class="hq-body"><p>Mostra o total que os hospitais já pagaram, somado e aberto mês a mês, com nome e data de cada repasse.</p></div>
+        </div>
+        <div class="hq-item" data-top="73" data-h="13">
+          <button class="hq-head">
+            <span class="hq-ic" style="background:#fff4e2;color:#d99427">⏳</span>
+            <span class="hq-main"><small>Saldo a receber</small><b>"Quanto ainda vou receber?"</b></span>
+            <span class="hq-chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M6 9l6 6 6-6"/></svg></span>
+          </button>
+          <div class="hq-body"><p>Traz a previsão do que vai cair nos próximos meses, com base nos seus atendimentos e nas regras de cada hospital.</p></div>
+        </div>
+        <div class="hq-item" data-top="60" data-h="13">
+          <button class="hq-head">
+            <span class="hq-ic" style="background:#fdeeec;color:#e2574c">📉</span>
+            <span class="hq-main"><small>Glosas acumuladas</small><b>"Quanto foi glosado?"</b></span>
+            <span class="hq-chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M6 9l6 6 6-6"/></svg></span>
+          </button>
+          <div class="hq-body"><p>Mostram, em um número claro, tudo o que não foi pago e que você pode contestar com o hospital.</p></div>
+        </div>
+        <div class="hq-item" data-top="86" data-h="12.5">
+          <button class="hq-head">
+            <span class="hq-ic" style="background:#eef4ff;color:#2874fc">⚡</span>
+            <span class="hq-main"><small>Receba hoje</small><b>"Posso receber agora?"</b></span>
+            <span class="hq-chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M6 9l6 6 6-6"/></svg></span>
+          </button>
+          <div class="hq-body"><p>Antecipe direto pelo topo da tela, sem ligar pro financeiro, na palma da mão.</p></div>
+        </div>
+        <div class="hq-group">Na home, você também tem</div>
+        <div class="hq-item" data-screen="screenMenu">
+          <button class="hq-head">
+            <span class="hq-ic" style="background:#eef4ff;color:#2874fc">🗂️</span>
+            <span class="hq-main"><small>Acesso rápido</small><b>Menu de funcionalidades</b></span>
+            <span class="hq-chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M6 9l6 6 6-6"/></svg></span>
+          </button>
+          <div class="hq-body"><p>Painel geral, chamados, envio de NF, suporte, suas fontes, perfil e muito mais. Tudo num menu só, a um toque.</p></div>
+        </div>
+        <div class="hq-item" data-screen="screenRecebimentos">
+          <button class="hq-head">
+            <span class="hq-ic" style="background:#eafaf6;color:var(--teal)">🧾</span>
+            <span class="hq-main"><small>Atividade recente</small><b>Últimos repasses recebidos</b></span>
+            <span class="hq-chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M6 9l6 6 6-6"/></svg></span>
+          </button>
+          <div class="hq-body"><p>Veja num relance os repasses mais recentes, com hospital, mês e valor, e vá direto ao extrato de cada um.</p></div>
+        </div>
+        <div class="home-hint">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11a3 3 0 1 0 6 0 3 3 0 0 0-6 0z"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg>
+          Toque num item e a tela do app muda junto.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="s-pad bg-soft" id="funcionalidades">
+  <div class="wrap">
+    <div class="s-head center reveal">
+      <span class="eyebrow">Por dentro do app</span>
+      <h2>Mergulhe em cada recurso</h2>
+    </div>
+    <div class="tabs">
+      <button class="tab active" data-tab="0">Repasses recebidos</button>
+      <button class="tab" data-tab="1">Gestão de glosas</button>
+      <button class="tab" data-tab="2">Saldo a receber</button>
+      <button class="tab" data-tab="3">Antecipação</button>
+      <button class="tab" data-tab="4">Gestão de antecipação</button>
+    </div>
+
+    <div class="tab-panel active" data-tab="0">
+      <div class="tp-grid">
+        <div>
+          <h3>Cada centavo, com nome e data</h3>
+          <div class="tp-tagline">Recebeu menos? Aqui você descobre exatamente por quê.</div>
+          <div class="tp-steps">
+            <div class="tp-step"><span class="n">1</span><div><b>Veja sua evolução</b><p>A linha do tempo mostra como seus recebimentos crescem mês a mês.</p></div></div>
+            <div class="tp-step"><span class="n">2</span><div><b>Ache em segundos</b><p>Filtre por hospital, procedimento, ou busque pelo nome do paciente.</p></div></div>
+            <div class="tp-step"><span class="n">3</span><div><b>Tudo destrinchado</b><p>Paciente, procedimento, glosas e custos, tudo aberto no detalhe.</p></div></div>
+          </div>
+          <div class="tp-feel">O que você sente: <b>clareza, sem caixa-preta</b></div>
+        </div>
+        <div class="device"><div class="scr"><img src="assets/repasses.png" alt="Tela de repasses recebidos: gráfico de evolução e lançamentos detalhados"><span class="pin" style="top:44%">1</span><span class="pin" style="top:73%">2</span><span class="pin" style="top:91%">3</span></div></div>
+      </div>
+    </div>
+
+    <div class="tab-panel" data-tab="1">
+      <div class="tp-grid">
+        <div>
+          <h3>O que era seu, de volta</h3>
+          <div class="tp-tagline">Glosa não precisa ser prejuízo aceito calado.</div>
+          <div class="tp-steps">
+            <div class="tp-step"><span class="n">1</span><div><b>Acompanhe a tendência</b><p>A linha do tempo mostra se suas glosas estão subindo ou caindo.</p></div></div>
+            <div class="tp-step"><span class="n">2</span><div><b>Encontre o que importa</b><p>Filtre por procedimento ou busque por nome pra achar uma glosa específica.</p></div></div>
+            <div class="tp-step"><span class="n">3</span><div><b>Conteste com o hospital</b><p>Use as informações da Seiwa como comprovante para a contestação.</p></div></div>
+          </div>
+          <div class="tp-feel">O que você sente: <b>poder de recuperar</b></div>
+        </div>
+        <div class="device"><div class="scr"><img src="assets/glosas.png" alt="Tela de gestão de glosas: tendência ao longo do tempo e detalhe de cada glosa com o motivo"><span class="pin" style="top:44%">1</span><span class="pin" style="top:73%">2</span><span class="pin" style="top:91%">3</span></div></div>
+      </div>
+    </div>
+
+    <div class="tab-panel" data-tab="2">
+      <div class="tp-grid">
+        <div>
+          <h3>Pare de receber surpresas</h3>
+          <div class="tp-tagline">Saiba, com antecedência, quanto e quando vai cair cada repasse.</div>
+          <div class="tp-steps">
+            <div class="tp-step"><span class="n">1</span><div><b>Previsão mês a mês</b><p>Calculada a partir dos seus atendimentos e das regras de cada hospital.</p></div></div>
+            <div class="tp-step"><span class="n">2</span><div><b>Entenda de onde vem</b><p>Toque num mês e veja quais atendimentos formam o valor.</p></div></div>
+            <div class="tp-step"><span class="n">3</span><div><b>Sempre atualizado</b><p>O "mês atual" mostra o ciclo em andamento, sem você conferir nada.</p></div></div>
+          </div>
+          <div class="tp-feel">O que você sente: <b>tranquilidade pra planejar</b></div>
+        </div>
+        <div class="device"><div class="scr"><img src="assets/saldo.png" alt="Tela de saldo a receber: previsão de recebimentos mês a mês e soma dos saldos previstos"><span class="pin" style="top:24.5%;left:15%">1</span><span class="pin" style="top:45%;left:88%">2</span><span class="pin" style="top:55%;left:39%">3</span></div></div>
+      </div>
+    </div>
+
+    <div class="tab-panel" data-tab="3">
+      <div class="tp-grid">
+        <div>
+          <h3>Seu dinheiro quando você precisa</h3>
+          <div class="tp-tagline">Receba hoje o que cairia lá na frente, sem juros de cartão.</div>
+          <div class="tp-steps">
+            <div class="tp-step"><span class="n">0</span><div><b>Abra sua conta Seiwa <span class="step-badge">uma vez só</span></b><p>A conta Seiwa é a <b>premissa para antecipar com conciliação automática</b> dos repasses dos hospitais. Sem ela, não dá pra adiantar. É criada uma única vez e pode levar <b>até 48h</b> para ficar pronta, por isso vale deixá-la pronta antes de precisar.</p></div></div>
+            <div class="tp-step"><span class="n">1</span><div><b>Simule sem compromisso</b><p>Escolha o valor cheio disponível ou um valor personalizado. Você só contrata se quiser.</p></div></div>
+            <div class="tp-step"><span class="n">2</span><div><b>Parcele a conciliação</b><p>Escolha em quantas parcelas quer fazer a conciliação.</p></div></div>
+            <div class="tp-step"><span class="n">3</span><div><b>Depois, é só um clique</b><p>Com a conta já aberta, as próximas antecipações são instantâneas. É só solicitar e o dinheiro cai na hora.</p></div></div>
+          </div>
+          <div class="tip-box">
+            <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 22h4"/><path d="M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.2 1 2h6c0-.8.4-1.5 1-2A7 7 0 0 0 12 2z"/></svg></span>
+            <p><b>Dica:</b> já imagina que vai querer antecipar algum dia? Abra a conta agora, com calma. Assim, quando o dinheiro fizer falta, ele cai na hora, sem precisar esperar a abertura no momento da pressa.</p>
+          </div>
+          <div class="tp-feel">O que você sente: <b>alívio na hora certa</b></div>
+        </div>
+        <div class="device"><div class="scr"><img src="assets/antecipacao.png" alt="Tela de antecipação: simulação do recebimento com valor, parcelas da conciliação e data"><span class="pin" style="top:36%">1</span><span class="pin" style="top:57%">2</span><span class="pin" style="top:90%">3</span>
+        <div class="acct-screen">
+          <div class="acct-h">Antecipações Seiwa</div>
+          <div class="acct-card"><b>Transforme repasses futuros em dinheiro hoje</b><p>Antecipe repasses já vencidos e ainda não pagos, ou previstos para os próximos meses.</p></div>
+          <div class="acct-how">Como funciona?</div>
+          <div class="acct-step"><span class="sn">1</span><div><b>Escolha o valor</b><p>Você decide quanto antecipar do saldo disponível.</p></div></div>
+          <div class="acct-step"><span class="sn">2</span><div><b>Simule as condições</b><p>Veja parcelas, datas e o custo antes de confirmar.</p></div></div>
+          <div class="acct-step"><span class="sn">3</span><div><b>Receba na sua conta</b><p>O dinheiro cai rapidamente na conta que você escolher.</p></div></div>
+          <div class="acct-note"><span class="ic">💡</span><div><b>Você precisa de uma conta Seiwa</b><p>É ela que permite a conciliação automática dos repasses dos hospitais. Crie a sua para começar.</p><span class="acct-btn-wrap"><button class="acct-btn">Criar conta Seiwa →</button><span class="pin acct-pin">0</span></span></div></div>
+        </div></div></div>
+      </div>
+    </div>
+
+    <div class="tab-panel" data-tab="4">
+      <div class="tp-grid">
+        <div>
+          <h3>Acompanhe o que já antecipou</h3>
+          <div class="tp-tagline">Veja o saldo em aberto, o que falta pagar e quando cada parcela vence.</div>
+          <div class="tp-steps">
+            <div class="tp-step"><span class="n">1</span><div><b>Saldo em aberto</b><p>Quanto ainda falta quitar e quantas parcelas você já pagou, num resumo só.</p></div></div>
+            <div class="tp-step"><span class="n">2</span><div><b>Próxima parcela</b><p>O valor e a data da próxima parcela, com aviso de quando vence.</p></div></div>
+            <div class="tp-step"><span class="n">3</span><div><b>Cronograma completo</b><p>Todas as parcelas em aberto, por procedimento e hospital, num lugar só.</p></div></div>
+            <div class="tp-step"><span class="n">4</span><div><b>Histórico</b><p>Suas antecipações recebidas, separadas entre abertas e quitadas.</p></div></div>
+          </div>
+          <div class="tp-feel">O que você sente: <b>controle do que antecipou</b></div>
+        </div>
+        <div class="device"><div class="scr">
+          <div class="acb">
+            <div class="acb-title">Antecipações</div>
+            <div class="acb-hero">
+              <div class="acb-hrow"><span class="acb-cap">SALDO EM ABERTO</span><span class="acb-ok">● Em dia</span></div>
+              <div class="acb-val">R$ <b>18.500</b><small>,00</small></div>
+              <div class="acb-bar"><i></i></div>
+              <div class="acb-hrow acb-foot"><span><b>4</b> de 12 parcelas pagas</span><span>48%</span></div>
+            </div>
+            <div class="acb-cap2">PRÓXIMA PARCELA A VENCER</div>
+            <div class="acb-next">
+              <div class="acb-date"><b>12</b><small>OUT</small></div>
+              <div><div class="acb-due">⏱ Vence em 9 dias</div><div class="acb-nsub">Parcela 5 de 12</div><div class="acb-namt">R$ 4.200,00</div></div>
+            </div>
+            <div class="acb-link">↓ Ver cronograma de parcelas ›</div>
+            <div class="acb-h2">Histórico</div>
+            <div class="acb-chips"><span class="on">Tudo</span><span>Aberto</span><span>Quitado</span></div>
+            <div class="acb-item"><span class="acb-iic">🧾</span><span class="acb-ib"><b>Rinoplastia</b><small>Hosp. Albert Einstein</small></span><span class="acb-iv">R$ 11.000<em>Aberto</em></span></div>
+            <div class="acb-item"><span class="acb-iic">🧾</span><span class="acb-ib"><b>Mamoplastia</b><small>Hosp. Vera Cruz</small></span><span class="acb-iv">R$ 16.000<em>Aberto</em></span></div>
+          </div>
+          <span class="pin" style="top:16%">1</span>
+          <span class="pin" style="top:42%">2</span>
+          <span class="pin" style="top:53%">3</span>
+          <span class="pin" style="top:64%">4</span>
+        </div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="s-pad" id="historias">
+  <div class="wrap">
+    <div class="s-head reveal">
+      <span class="eyebrow">Casos do dia a dia</span>
+      <h2>Histórias como a sua</h2>
+      <p class="lead">Médicos que pararam de torcer pra dar certo e passaram a saber, decidir e receber com tranquilidade. Toque para ver como cada um resolveu.</p>
+    </div>
+    <div class="cases">
+      <div class="case reveal d1 resolve-open">
+        <div class="role">Cirurgiã plástica · 3 hospitais</div>
+        <h3>"Recebi menos do que esperava"</h3>
+        <div class="money"><span class="big" data-count="9500">R$ 0</span><span class="old">de R$ 11.000</span></div>
+        <div class="money-label">Caiu numa rinoplastia, sem saber o porquê</div>
+        <button class="case-btn" data-stage="story">Ver a história <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="case-story"><p>Cirurgiã plástica que atende em 3 hospitais. Fez uma rinoplastia esperando R$ 11.000, mas caíram só R$ 9.500, e ela não sabia o porquê. Era aquele aperto no peito sem entender a razão do desconto.</p></div>
+        <div class="case-detail"><div class="case-steps">
+          <div class="cs"><span class="n">1</span><p><b>Abriu o app.</b> Viu na home: recebeu <b>R$ 9.500</b> do esperado R$ 11.000.</p></div>
+          <div class="cs"><span class="n">2</span><p><b>Tocou no lançamento.</b> O Extrato mostrou <b>R$ 800 de glosa</b> + custos e impostos.</p></div>
+          <div class="cs"><span class="n">3</span><p><b>Foi para Glosas.</b> Viu o <b>motivo</b> exato da glosa.</p></div>
+          <div class="cs"><span class="n">4</span><p><b>Abriu um chamado.</b> Contestou <b>direto com o hospital</b> com base nas informações do app.</p></div>
+          <div class="case-resolve">✓ Resolveu pelo Extrato + Glosas</div>
+        </div></div>
+      </div>
+      <div class="case reveal d2 resolve-open">
+        <div class="role">Anestesista · plantões</div>
+        <h3>"Precisava do dinheiro agora"</h3>
+        <div class="money"><span class="big" data-count="16000">R$ 0</span><span class="old">em 60 dias</span></div>
+        <div class="money-label">O dinheiro existia, só estava longe</div>
+        <button class="case-btn" data-stage="story">Ver a história <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="case-story"><p>Anestesista de plantão tinha R$ 16.000 para receber, só que daqui a 60 dias, e a conta não podia esperar. O dinheiro existia, só estava longe. Em vez de recorrer a juros de cartão, ele resolveu na própria Seiwa.</p></div>
+        <div class="case-detail"><div class="case-steps">
+          <div class="cs"><span class="n">1</span><p><b>Abriu "Receba hoje".</b> Viu na home <b>quanto podia antecipar</b> agora.</p></div>
+          <div class="cs"><span class="n">2</span><p><b>Simulou em segundos.</b> Escolheu o valor e viu o <b>custo da operação</b> na hora.</p></div>
+          <div class="cs"><span class="n">3</span><p><b>Parcelou o desconto.</b> Optou por <b>parcelar a conciliação</b> em vez de uma vez só.</p></div>
+          <div class="cs"><span class="n">4</span><p><b>Recebeu na conta.</b> O dinheiro caiu <b>no mesmo dia</b> na conta Seiwa.</p></div>
+          <div class="case-resolve">✓ Resolveu com a Antecipação</div>
+        </div></div>
+      </div>
+      <div class="case reveal d3 resolve-open">
+        <div class="role">Ortopedista · 2 convênios</div>
+        <h3>"Quando vou receber?"</h3>
+        <div class="money"><span class="big">Previsão clara</span></div>
+        <div class="money-label">Cansou de viver no escuro até o dinheiro cair</div>
+        <button class="case-btn" data-stage="story">Ver a história <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="case-story"><p>Ortopedista com 2 convênios queria saber quanto e quando ia receber para organizar a vida, sem depender de ligação pro financeiro. Estava cansado de viver no escuro até o dinheiro finalmente cair.</p></div>
+        <div class="case-detail"><div class="case-steps">
+          <div class="cs"><span class="n">1</span><p><b>Abriu "Saldo a receber".</b> Viu a <b>previsão mês a mês</b> dos próximos recebimentos.</p></div>
+          <div class="cs"><span class="n">2</span><p><b>Tocou em um mês.</b> Descobriu <b>de qual atendimento</b> vinha cada valor.</p></div>
+          <div class="cs"><span class="n">3</span><p><b>Conferiu o líquido.</b> Valores já <b>com glosas e impostos</b> descontados.</p></div>
+          <div class="cs"><span class="n">4</span><p><b>Planejou tranquilo.</b> Organizou os gastos <b>sem nenhuma ligação</b>.</p></div>
+          <div class="case-resolve">✓ Resolveu com o Saldo a receber</div>
+        </div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="s-pad bg-soft" id="duvidas">
+  <div class="wrap">
+    <div class="s-head center reveal">
+      <span class="eyebrow">Dúvidas comuns</span>
+      <h2>As perguntas que você faz e onde achar</h2>
+    </div>
+    <div class="faq">
+      <div class="faq-item"><button class="faq-q">"Quanto eu já recebi?"<span class="plus"></span></button><div class="faq-a"><p>Veja <span class="pill">Repasses recebidos</span> na home, com o total já pago pelos hospitais.</p></div></div>
+      <div class="faq-item"><button class="faq-q">"Quando vou receber o resto?"<span class="plus"></span></button><div class="faq-a"><p>Em <span class="pill">Saldo a receber</span>, mês a mês, com a previsão de cada repasse.</p></div></div>
+      <div class="faq-item"><button class="faq-q">"Por que recebi menos?"<span class="plus"></span></button><div class="faq-a"><p>Toque no <span class="pill">lançamento no Extrato</span> para ver glosas e custos.</p></div></div>
+      <div class="faq-item"><button class="faq-q">"O que foi cortado e por quê?"<span class="plus"></span></button><div class="faq-a"><p>Em <span class="pill">Gestão de Glosas</span>, com o motivo de cada valor não pago.</p></div></div>
+      <div class="faq-item"><button class="faq-q">"Posso receber antes?"<span class="plus"></span></button><div class="faq-a"><p>Sim, em <span class="pill">Antecipação</span>, simule e receba hoje o que cairia depois.</p></div></div>
+      <div class="faq-item"><button class="faq-q">"Quanto ainda devo da antecipação?"<span class="plus"></span></button><div class="faq-a"><p>No <span class="pill">cronograma de parcelas</span>, com o que falta pagar por procedimento.</p></div></div>
+      <div class="faq-item"><button class="faq-q">"Onde está aquele repasse específico?"<span class="plus"></span></button><div class="faq-a"><p>No <span class="pill">Extrato</span>, use a busca por nome ou filtre por hospital e procedimento.</p></div></div>
+      <div class="faq-item"><button class="faq-q">"Não achei o que procurava, e agora?"<span class="plus"></span></button><div class="faq-a"><p>Toque em <span class="pill">Falar com a Seiwa</span> e a gente te ajuda a localizar.</p></div></div>
+    </div>
+
+    <div class="faq-sub reveal">
+      <span class="eyebrow">Antecipação</span>
+      <h3>Como funciona a antecipação na Seiwa?</h3>
+      <p><b>A Seiwa antecipa o valor da sua produção médica antes do hospital pagar.</b> Você realizou o procedimento, o valor está a caminho, e a gente adianta para você agora.</p>
+    </div>
+    <div class="faq">
+      <div class="faq-item"><button class="faq-q">Como sei quanto posso antecipar?<span class="plus"></span></button><div class="faq-a"><p>No app, você vê o seu <span class="pill">saldo disponível para antecipação</span> direto na tela inicial. Esse valor é calculado com base na sua produção realizada e no histórico de repasses do hospital. Quanto mais histórico você tiver, mais precisa é a estimativa.</p></div></div>
+      <div class="faq-item"><button class="faq-q">Qual é a taxa cobrada?<span class="plus"></span></button><div class="faq-a"><p>A Seiwa cobra uma taxa sobre o valor antecipado, descontada automaticamente quando o hospital efetua o pagamento. Você não precisa pagar nada separado. O modelo é transparente: você vê exatamente o valor que vai receber, as parcelas e o custo da operação antes de confirmar.</p></div></div>
+      <div class="faq-item"><button class="faq-q">Como funciona o pagamento de volta?<span class="plus"></span></button><div class="faq-a"><p>O desconto acontece direto no repasse do hospital. Quando o hospital paga, a Seiwa desconta o valor antecipado mais a taxa e repassa o restante para você. Sem boleto e sem data para lembrar.</p></div></div>
+      <div class="faq-item"><button class="faq-q">Posso parcelar?<span class="plus"></span></button><div class="faq-a"><p>Sim. Na simulação, você escolhe o valor e o número de parcelas (até 6x). O app já mostra o resultado automaticamente conforme você preenche, sem precisar clicar em "simular". Quando estiver pronto, é só confirmar.</p></div></div>
+      <div class="faq-item"><button class="faq-q">Preciso de conta bancária cadastrada?<span class="plus"></span></button><div class="faq-a"><p>Sim. Para receber a antecipação, você precisa ter uma conta vinculada ao seu CPF ou CNPJ cadastrada no app. Abrir a conta é gratuito.</p></div></div>
+      <div class="faq-item"><button class="faq-q">E se eu não tiver saldo disponível?<span class="plus"></span></button><div class="faq-a"><p>Pode acontecer se você for novo no hospital e ainda não tiver histórico de repasses. A Seiwa está trabalhando para que médicos com produção realizada, mesmo sem histórico longo, também consigam antecipar. Se você realizou procedimentos, o valor está lá, e a gente quer garantir que você consiga acessá-lo.</p></div></div>
+    </div>
+    <p class="faq-foot">💬 Ficou com dúvida? Fale com a gente pelo <a href="https://wa.me/5531992086044" target="_blank" rel="noopener">WhatsApp</a> ou <a href="mailto:suporte@seiwa.app">e-mail</a>. Nosso suporte está aqui para ajudar.</p>
+  </div>
+</section>
+
+<section class="s-pad" id="porque">
+  <div class="wrap">
+    <div class="why reveal">
+      <span class="eyebrow">Por que isso importa</span>
+      <h2>Sem surpresas</h2>
+      <div class="why-grid">
+        <div class="why-card">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M9 12l2 2 4-4"/></svg></div>
+          <h3>Sem surpresas</h3><p>Você sabe exatamente quanto, quando e de quem vai receber, sem planilha, sem ligação.</p>
+        </div>
+        <div class="why-card">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg></div>
+          <h3>Cada centavo explicado</h3><p>Recebeu menos? O app mostra o porquê e o que dá para recuperar.</p>
+        </div>
+        <div class="why-card">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+          <h3>No seu tempo</h3><p>Precisa do dinheiro antes? Antecipe. Pode esperar? Acompanhe a previsão tranquilo.</p>
+        </div>
+      </div>
+      <div class="disp">
+        <span class="lbl">Disponível para</span>
+        <div class="store-badges">
+          <a href="https://apps.apple.com/br/app/seiwa/id1553323682" target="_blank" rel="noopener" class="store" aria-label="Baixar na App Store">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.56 12.6c-.02-2.2 1.8-3.26 1.88-3.31-1.03-1.5-2.62-1.7-3.19-1.73-1.36-.14-2.65.8-3.34.8-.69 0-1.75-.78-2.88-.76-1.48.02-2.85.86-3.61 2.19-1.54 2.67-.39 6.62 1.1 8.79.73 1.06 1.6 2.25 2.74 2.21 1.1-.04 1.51-.71 2.84-.71 1.32 0 1.7.71 2.86.69 1.18-.02 1.93-1.08 2.65-2.15.84-1.23 1.18-2.42 1.2-2.48-.03-.01-2.3-.88-2.99-3.37zM15.4 6.13c.6-.74 1.01-1.76.9-2.78-.87.04-1.93.58-2.56 1.31-.56.65-1.05 1.69-.92 2.69.97.07 1.97-.49 2.58-1.22z"/></svg>
+            <span class="st-txt"><small>Baixar na</small><b>App Store</b></span>
+          </a>
+          <a href="https://play.google.com/store/apps/details?id=com.seiwa" target="_blank" rel="noopener" class="store" aria-label="Disponível no Google Play">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.6 2.3c-.2.2-.3.5-.3.9v17.6c0 .4.1.7.3.9l9.4-9.7L3.6 2.3z" fill="#00C3FF"/><path d="M16.8 15.2 13 11.9l-9.4 9.8c.3.3.8.3 1.3 0l11.9-6.5z" fill="#FF3D00"/><path d="M16.8 8.6 5.9 2.2c-.5-.3-1-.3-1.3 0L13 11.9l3.8-3.3z" fill="#00E676"/><path d="M16.8 8.6 13 11.9l3.8 3.3 3.4-1.9c.8-.5.8-1.7 0-2.2l-3.4-1.9z" fill="#FFCE00"/></svg>
+            <span class="st-txt"><small>Disponível no</small><b>Google Play</b></span>
+          </a>
+        </div>
+      </div>
+      <div class="support">
+        <span class="lbl">Suporte</span>
+        <a href="https://wa.me/5531992086044" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.6 4.7-1.2A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-1.7-.1-.4-.1-.9-.3-1.6-.6-2.8-1.2-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.8s.7-2 .9-2.2c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 1.9c.1.2.1.4 0 .5l-.4.5c-.2.2-.3.4-.1.7.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.2.1.4.1.6-.1l.7-.9c.2-.3.4-.2.6-.1l1.8.9c.3.1.4.2.5.3.1.2.1.7-.1 1.3z"/></svg>
+          WhatsApp (31) 99208-6044
+        </a>
+        <a href="mailto:suporte@seiwa.app">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+          suporte@seiwa.app
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <img src="assets/logo.png" alt="Seiwa" class="footer-logo-img">
+    <div class="footer-logo">seiwa</div>
+    <p class="footer-slogan">Mais do que um sistema, uma ponte entre o hospital e o médico.</p>
+    <p>Você cuida dos seus pacientes. A gente cuida do seu dinheiro.</p>
+  </div>
+</footer>
+
+<script>
+const STEPS=[
+  ["Identificação","Telefone e CPF criam a chave única da sua conta, o ponto de partida."],
+  ["Dados de PJ","Informações sobre a sua conta PJ utilizada no hospital."],
+  ["Conta bancária","Onde o dinheiro do hospital chega e onde depositamos a antecipação."],
+  ["Suas fontes","Os hospitais com quem você trabalha, de onde a Seiwa busca seus pagamentos."]
+];
+let curStep=0;
+function setStep(i){
+  curStep=i;
+  document.querySelectorAll('.tl-node').forEach((n,j)=>{
+    n.classList.toggle('active',j===i);
+    n.classList.toggle('done',j<i);
+  });
+  document.getElementById('tlProgress').style.width=(STEPS.length>1?i/(STEPS.length-1)*75:0)+'%';
+  document.getElementById('stepBigN').textContent=String(i+1);
+  document.getElementById('stepTitle').textContent=STEPS[i][0];
+  document.getElementById('stepDesc').textContent=STEPS[i][1];
+  document.getElementById('stepPrev').disabled=i===0;
+  document.getElementById('stepNext').disabled=i===STEPS.length-1;
+}
+document.querySelectorAll('.tl-node').forEach(n=>n.addEventListener('click',()=>setStep(+n.dataset.step)));
+document.getElementById('stepPrev').addEventListener('click',()=>{if(curStep>0)setStep(curStep-1);});
+document.getElementById('stepNext').addEventListener('click',()=>{if(curStep<STEPS.length-1)setStep(curStep+1);});
+setStep(0);
+
+const hl=document.getElementById('hl');
+const homeScr=document.getElementById('homeScr');
+function selectHq(it){
+  document.querySelectorAll('.hq-item').forEach(x=>x.classList.remove('open'));
+  it.classList.add('open');
+  document.querySelectorAll('.home-alt').forEach(s=>s.classList.remove('show'));
+  if(it.dataset.screen){
+    homeScr.classList.add('alt-on');
+    hl.classList.remove('show');
+    const sc=document.getElementById(it.dataset.screen);
+    if(sc)sc.classList.add('show');
+  }else{
+    homeScr.classList.remove('alt-on');
+    hl.style.top=it.dataset.top+'%';
+    hl.style.height=it.dataset.h+'%';
+    hl.classList.add('show');
+  }
+}
+document.querySelectorAll('.hq-item').forEach(it=>{
+  it.querySelector('.hq-head').addEventListener('click',()=>selectHq(it));
+});
+const firstHq=document.querySelector('.hq-item.open')||document.querySelector('.hq-item');
+if(firstHq)selectHq(firstHq);
+
+document.querySelectorAll('.tab').forEach(t=>t.addEventListener('click',()=>{
+  const i=t.dataset.tab;
+  document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('active',x.dataset.tab===i));
+  document.querySelectorAll('.tab-panel').forEach(x=>x.classList.toggle('active',x.dataset.tab===i));
+}));
+
+document.querySelectorAll('.tab-panel').forEach(panel=>{
+  const steps=panel.querySelectorAll('.tp-step');
+  const pins=panel.querySelectorAll('.pin');
+  const scr=panel.querySelector('.scr');
+  const hasAcct=!!panel.querySelector('.acct-screen');
+  if(!steps.length||!scr)return;
+  const set=i=>{
+    steps.forEach((s,j)=>s.classList.toggle('hot',j===i));
+    if(hasAcct&&i===0){scr.classList.add('show-acct');pins.forEach(p=>p.classList.remove('active'));return;}
+    scr.classList.remove('show-acct');
+    const pi=hasAcct?i-1:i;
+    pins.forEach((p,j)=>p.classList.toggle('active',j===pi));
+  };
+  steps.forEach((s,i)=>{
+    s.addEventListener('mouseenter',()=>set(i));
+    s.addEventListener('click',()=>set(i));
+  });
+  set(hasAcct?1:0);
+});
+
+document.querySelectorAll('.case-btn').forEach(b=>{
+  b.addEventListener('click',()=>{
+    const card=b.closest('.case');
+    if(b.dataset.stage==='story'){
+      card.classList.toggle('story-open');
+    }else{
+      card.classList.toggle('resolve-open');
+    }
+  });
+});
+
+document.querySelectorAll('.faq-item').forEach(it=>{
+  it.querySelector('.faq-q').addEventListener('click',()=>{
+    const open=it.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(x=>x.classList.remove('open'));
+    if(!open)it.classList.add('open');
+  });
+});
+
+const nav=document.getElementById('nav');
+addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>30));
+const burger=document.getElementById('burger'),navLinks=document.getElementById('navLinks');
+burger.addEventListener('click',()=>navLinks.classList.toggle('open'));
+navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>navLinks.classList.remove('open')));
+
+const io=new IntersectionObserver(es=>{
+  es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
+},{threshold:.15});
+document.querySelectorAll('.reveal:not(.in)').forEach(el=>io.observe(el));
+
+const fmt=new Intl.NumberFormat('pt-BR');
+const co=new IntersectionObserver(es=>{
+  es.forEach(e=>{
+    if(!e.isIntersecting)return;
+    const el=e.target,target=+el.dataset.count,t0=performance.now();
+    const tick=t=>{const p=Math.min((t-t0)/1100,1);const cur=Math.round(target*(1-Math.pow(1-p,3)));el.textContent='R$ '+fmt.format(cur);if(p<1)requestAnimationFrame(tick);};
+    requestAnimationFrame(tick);co.unobserve(el);
+  });
+},{threshold:.6});
+document.querySelectorAll('[data-count]').forEach(el=>co.observe(el));
+
+/* ===== Movimento & efeitos ===== */
+(function(){
+  const reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const embedded=window.self!==window.top;
+  if(!embedded){
+    const prog=document.createElement('div');prog.className='scroll-prog';document.body.appendChild(prog);
+    const toTop=document.createElement('button');toTop.className='to-top';toTop.setAttribute('aria-label','Voltar ao topo');toTop.textContent='↑';document.body.appendChild(toTop);
+    toTop.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+    const onScroll=()=>{
+      const d=document.documentElement,sc=d.scrollTop||document.body.scrollTop,max=d.scrollHeight-d.clientHeight;
+      prog.style.width=(max>0?sc/max*100:0)+'%';
+      toTop.classList.toggle('show',sc>540);
+    };
+    addEventListener('scroll',onScroll,{passive:true});onScroll();
+  }
+  document.querySelectorAll('.case,.why-card').forEach(card=>{
+    card.addEventListener('mousemove',e=>{
+      const r=card.getBoundingClientRect();
+      card.style.setProperty('--mx',(e.clientX-r.left)+'px');
+      card.style.setProperty('--my',(e.clientY-r.top)+'px');
+    });
+  });
+  if(reduce)return;
+  const hero=document.querySelector('.hero');
+  if(hero){
+    const vw=hero.querySelector('.video-wrap'),b1=hero.querySelector('.blob.b1'),b2=hero.querySelector('.blob.b2');
+    hero.addEventListener('mousemove',e=>{
+      const r=hero.getBoundingClientRect();
+      const x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
+      if(vw)vw.style.transform='translate('+(x*16)+'px,'+(y*16)+'px)';
+      if(b1)b1.style.transform='translate('+(x*45)+'px,'+(y*45)+'px)';
+      if(b2)b2.style.transform='translate('+(x*-32)+'px,'+(y*-32)+'px)';
+    });
+    hero.addEventListener('mouseleave',()=>{[vw,b1,b2].forEach(el=>{if(el)el.style.transform='';});});
+    for(let i=0;i<16;i++){
+      const p=document.createElement('span');p.className='particle';
+      const s=(2+Math.random()*4).toFixed(1);
+      p.style.width=s+'px';p.style.height=s+'px';
+      p.style.left=(Math.random()*100).toFixed(1)+'%';
+      p.style.animationDuration=(5+Math.random()*7).toFixed(1)+'s';
+      p.style.animationDelay=(-Math.random()*9).toFixed(1)+'s';
+      hero.appendChild(p);
+    }
+  }
+  document.querySelectorAll('.btn-primary').forEach(btn=>{
+    btn.addEventListener('mousemove',e=>{
+      const r=btn.getBoundingClientRect();
+      btn.style.transform='translate('+((e.clientX-r.left-r.width/2)*.25)+'px,'+((e.clientY-r.top-r.height/2)*.4)+'px)';
+    });
+    btn.addEventListener('mouseleave',()=>{btn.style.transform='';});
+  });
+})();
+
+/* ===== Incorporação no WordPress (iframe Full Width com auto-resize) ===== */
+if(window.self!==window.top){
+  document.documentElement.classList.add('embedded');
+  document.querySelectorAll('.reveal').forEach(el=>el.classList.add('in'));
+  const postH=()=>{try{parent.postMessage({type:'seiwa-h',h:document.documentElement.scrollHeight},'*');}catch(e){}};
+  if(window.ResizeObserver)new ResizeObserver(postH).observe(document.body);
+  addEventListener('load',postH);addEventListener('resize',postH);
+  postH();setTimeout(postH,400);setTimeout(postH,1200);setTimeout(postH,2500);
+  document.addEventListener('click',e=>{
+    const a=e.target.closest&&e.target.closest('a[href^="#"]');
+    if(!a)return;
+    const id=a.getAttribute('href').slice(1);
+    if(!id)return;
+    const el=document.getElementById(id);
+    if(!el)return;
+    e.preventDefault();
+    const top=el.getBoundingClientRect().top+(window.scrollY||window.pageYOffset||0);
+    try{parent.postMessage({type:'seiwa-scroll',top:top},'*');}catch(err){}
+  });
+}
+</script>
+</body>
+</html>
