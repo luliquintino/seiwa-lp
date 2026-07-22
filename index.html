@@ -276,7 +276,7 @@ header.nav.scrolled{background:rgba(255,255,255,.82);backdrop-filter:blur(14px);
 .faq-a .pill{color:var(--teal);font-weight:700}
 .why{background:linear-gradient(160deg,#001a3d,#000b1f);color:#fff;border-radius:36px;padding:64px;position:relative;overflow:hidden}
 .why::after{content:"";position:absolute;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(0,236,201,.3),transparent 70%);top:-120px;right:-80px}
-.why-grid{position:relative;z-index:2;display:grid;grid-template-columns:repeat(3,1fr);gap:30px;margin:42px 0 50px}
+.why-grid{position:relative;z-index:2;display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin:42px 0 50px}
 .why-card .ic{width:48px;height:48px;border-radius:14px;background:rgba(0,236,201,.14);display:flex;align-items:center;justify-content:center;color:var(--teal-bright);margin-bottom:16px}
 .why-card .ic svg{width:24px;height:24px}
 .why-card h3{font-size:20px;margin-bottom:8px}
@@ -393,7 +393,8 @@ footer p{font-size:14px;max-width:42ch;margin:0 auto 6px}
 .reveal.in{opacity:1;transform:none}
 .reveal.d1{transition-delay:.08s}.reveal.d2{transition-delay:.16s}.reveal.d3{transition-delay:.24s}.reveal.d4{transition-delay:.32s}
 @media(max-width:980px){
-  .hero-grid,.home-layout,.step-layout,.tp-grid,.why-grid{grid-template-columns:1fr}
+  .hero-grid,.home-layout,.step-layout,.tp-grid{grid-template-columns:1fr}
+  .why-grid{grid-template-columns:repeat(2,1fr)}
   .feat-grid{grid-template-columns:repeat(2,1fr)}
   .cases{grid-template-columns:1fr}
   .nav-links{display:none}.burger{display:flex}
@@ -402,7 +403,7 @@ footer p{font-size:14px;max-width:42ch;margin:0 auto 6px}
   .why{padding:40px 26px}.hero{padding:130px 0 70px}
   .video-wrap{order:-1}.float-card{display:none}.home-layout .phone{order:-1}
 }
-@media(max-width:560px){.feat-grid{grid-template-columns:1fr}.tp-grid{padding:24px}.s-pad{padding:70px 0}.why-grid{margin:30px 0 36px}}
+@media(max-width:560px){.feat-grid{grid-template-columns:1fr}.tp-grid{padding:24px}.s-pad{padding:70px 0}.why-grid{grid-template-columns:1fr;margin:30px 0 36px}}
 /* ===== Movimento & efeitos ===== */
 @media (prefers-reduced-motion: reduce){
   *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
@@ -834,19 +835,23 @@ footer p{font-size:14px;max-width:42ch;margin:0 auto 6px}
   <div class="wrap">
     <div class="why reveal">
       <span class="eyebrow">Por que isso importa</span>
-      <h2>Sem surpresas</h2>
+      <h2>Confiança, clareza, inteligência e liquidez</h2>
       <div class="why-grid">
         <div class="why-card">
-          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M9 12l2 2 4-4"/></svg></div>
-          <h3>Sem surpresas</h3><p>Você sabe exatamente quanto, quando e de quem vai receber, sem planilha, sem ligação.</p>
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l7 3v5c0 4.4-3 7.6-7 9-4-1.4-7-4.6-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg></div>
+          <h3>Confiança</h3><p>Toda a sua produção e cada recebimento em um só lugar. Nada some, nada fica no escuro.</p>
         </div>
         <div class="why-card">
           <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg></div>
-          <h3>Cada centavo explicado</h3><p>Recebeu menos? O app mostra o porquê e o que dá para recuperar.</p>
+          <h3>Clareza</h3><p>Recebeu menos? O detalhe mostra o porquê: glosas, custos e impostos, item por item.</p>
         </div>
         <div class="why-card">
-          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
-          <h3>No seu tempo</h3><p>Precisa do dinheiro antes? Antecipe. Pode esperar? Acompanhe a previsão tranquilo.</p>
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 0 0-4 12.6c.6.5 1 1.2 1 2h6c0-.8.4-1.5 1-2A7 7 0 0 0 12 2z"/></svg></div>
+          <h3>Inteligência</h3><p>Cruze recebido, glosas e previsão pra decidir com dados: o que contestar, esperar ou antecipar.</p>
+        </div>
+        <div class="why-card">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg></div>
+          <h3>Liquidez</h3><p>Precisa do dinheiro antes? Antecipe e receba hoje o que cairia lá na frente, no seu tempo.</p>
         </div>
       </div>
       <div class="disp">
