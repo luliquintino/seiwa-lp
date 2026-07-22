@@ -330,11 +330,11 @@ footer p{font-size:14px;max-width:42ch;margin:0 auto 6px}
 .mt-soon{display:inline-block;font-size:8.5px;font-weight:700;color:var(--muted);background:#e8ecf1;border-radius:100px;padding:2px 8px;margin-top:2px}
 .mt-ic svg{width:19px;height:19px}
 .recv{display:flex;gap:11px;padding-bottom:14px;position:relative}
-.recv-dot{width:15px;height:15px;border-radius:50%;background:var(--teal);box-shadow:0 0 0 3px rgba(0,197,168,.18);flex-shrink:0;margin-top:3px;z-index:2}
-.recv:not(:last-child)::before{content:"";position:absolute;left:7px;top:16px;bottom:0;width:2px;background:var(--teal-light);opacity:.5}
-.recv-b b{display:block;font-size:13px;color:var(--navy);font-family:var(--display)}
-.recv-b small{display:block;font-size:11px;color:var(--muted)}
-.recv-v{display:block;font-size:14px;font-weight:800;color:var(--navy);font-family:var(--display);margin:2px 0}
+.recv-dot{width:14px;height:14px;border-radius:50%;background:var(--teal);box-shadow:0 0 0 3px rgba(0,197,168,.18);flex-shrink:0;margin-top:19px;z-index:2}
+.recv:not(:last-child)::before{content:"";position:absolute;left:6px;top:24px;bottom:0;width:2px;background:var(--teal-light);opacity:.5}
+.recv-b small{display:block;font-size:11px;color:var(--muted);margin-bottom:1px}
+.recv-b b{display:block;font-size:13.5px;color:var(--navy);font-family:var(--display)}
+.recv-v{display:block;font-size:16px;font-weight:800;color:var(--navy);font-family:var(--display);margin:1px 0 2px}
 .recv-link{font-size:11px;color:var(--teal);font-weight:700}
 .recv-more{text-align:center;font-size:12px;font-weight:700;color:var(--navy);font-family:var(--display);border-top:1px solid var(--line);padding-top:11px;margin-top:2px}
 .acb{padding:14px 13px;text-align:left;font-family:var(--font)}
@@ -533,14 +533,13 @@ footer p{font-size:14px;max-width:42ch;margin:0 auto 6px}
           </div>
         </div>
         <div class="home-alt" id="screenRecebimentos">
-          <div class="alt-h">Últimos repasses recebidos</div>
+          <div class="alt-h">Últimos recebimentos</div>
           <div class="recv-list">
-            <div class="recv"><span class="recv-dot"></span><div class="recv-b"><b>Maternidade Curitiba</b><small>Repassado em 12/02/2026</small><span class="recv-v">R$ 28.595,00</span><span class="recv-link">Ver repasse</span></div></div>
-            <div class="recv"><span class="recv-dot"></span><div class="recv-b"><b>Maternidade Curitiba</b><small>Repassado em 12/02/2026</small><span class="recv-v">R$ 19.257,00</span><span class="recv-link">Ver repasse</span></div></div>
-            <div class="recv"><span class="recv-dot"></span><div class="recv-b"><b>Hospital Sírio Libanês</b><small>Repassado em 09/02/2026</small><span class="recv-v">R$ 51.025,00</span><span class="recv-link">Ver repasse</span></div></div>
-            <div class="recv"><span class="recv-dot"></span><div class="recv-b"><b>Hospital Santa Cruz</b><small>Repassado em 05/02/2026</small><span class="recv-v">R$ 9.595,00</span><span class="recv-link">Ver repasse</span></div></div>
+            <div class="recv"><span class="recv-dot"></span><div class="recv-b"><small>Recebido em 14/09/25</small><b>Hospital Vera Cruz</b><span class="recv-v">R$ 1.100,00</span><span class="recv-link">Ver Recebimento</span></div></div>
+            <div class="recv"><span class="recv-dot"></span><div class="recv-b"><small>Recebido em 12/09/25</small><b>Hospital Vera Cruz</b><span class="recv-v">R$ 11.000,00</span><span class="recv-link">Ver Recebimento</span></div></div>
+            <div class="recv"><span class="recv-dot"></span><div class="recv-b"><small>Recebido em 09/09/25</small><b>Hospital Vera Cruz</b><span class="recv-v">R$ 12.000,00</span><span class="recv-link">Ver Recebimento</span></div></div>
+            <div class="recv"><span class="recv-dot"></span><div class="recv-b"><small>Recebido em 06/09/25</small><b>Hospital São Vicente</b><span class="recv-v">R$ 7.000,00</span><span class="recv-link">Ver Recebimento</span></div></div>
           </div>
-          <div class="recv-more">Ver mais ⌄</div>
         </div>
       </div></div>
       <div class="home-q reveal d1">
@@ -589,7 +588,7 @@ footer p{font-size:14px;max-width:42ch;margin:0 auto 6px}
         <div class="hq-item" data-screen="screenRecebimentos">
           <button class="hq-head">
             <span class="hq-ic" style="background:#eafaf6;color:var(--teal)">🧾</span>
-            <span class="hq-main"><small>Atividade recente</small><b>Últimos repasses recebidos</b></span>
+            <span class="hq-main"><small>Atividade recente</small><b>Últimos recebimentos</b></span>
             <span class="hq-chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M6 9l6 6 6-6"/></svg></span>
           </button>
           <div class="hq-body"><p>Veja num relance os repasses mais recentes, com hospital, mês e valor, e vá direto ao extrato de cada um.</p></div>
