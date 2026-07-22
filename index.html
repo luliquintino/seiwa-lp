@@ -329,13 +329,14 @@ footer p{font-size:14px;max-width:42ch;margin:0 auto 6px}
 .mt-ic{width:34px;height:34px;border-radius:10px;background:var(--bg-tint);display:flex;align-items:center;justify-content:center;color:var(--teal);flex-shrink:0}
 .mt-soon{display:inline-block;font-size:8.5px;font-weight:700;color:var(--muted);background:#e8ecf1;border-radius:100px;padding:2px 8px;margin-top:2px}
 .mt-ic svg{width:19px;height:19px}
-.recv{display:flex;gap:11px;padding-bottom:14px;position:relative}
-.recv-dot{width:14px;height:14px;border-radius:50%;background:var(--teal);box-shadow:0 0 0 3px rgba(0,197,168,.18);flex-shrink:0;margin-top:19px;z-index:2}
-.recv:not(:last-child)::before{content:"";position:absolute;left:6px;top:24px;bottom:0;width:2px;background:var(--teal-light);opacity:.5}
-.recv-b small{display:block;font-size:11px;color:var(--muted);margin-bottom:1px}
-.recv-b b{display:block;font-size:13.5px;color:var(--navy);font-family:var(--display)}
-.recv-v{display:block;font-size:16px;font-weight:800;color:var(--navy);font-family:var(--display);margin:1px 0 2px}
-.recv-link{font-size:11px;color:var(--teal);font-weight:700}
+.recv{position:relative;padding-bottom:16px}
+.recv-date{font-size:11px;color:var(--muted);margin-bottom:5px;padding-left:2px}
+.recv-row{display:flex;gap:12px;position:relative}
+.recv-dot{width:14px;height:14px;border-radius:50%;background:var(--teal);box-shadow:0 0 0 3px rgba(0,197,168,.16);flex-shrink:0;margin-top:2px;z-index:2}
+.recv:not(:last-child)::before{content:"";position:absolute;left:7px;top:26px;bottom:2px;width:2px;background:var(--teal-light);opacity:.55}
+.recv-b b{display:block;font-size:14px;color:var(--navy);font-family:var(--display)}
+.recv-v{display:block;font-size:16px;font-weight:800;color:var(--navy);font-family:var(--display);margin:2px 0 3px}
+.recv-link{font-size:12px;color:var(--teal);font-weight:700}
 .recv-more{text-align:center;font-size:12px;font-weight:700;color:var(--navy);font-family:var(--display);border-top:1px solid var(--line);padding-top:11px;margin-top:2px}
 .acb{padding:14px 13px;text-align:left;font-family:var(--font)}
 .acb-title{font-family:var(--display);font-weight:800;font-size:15px;color:var(--navy);text-align:center;margin-bottom:12px}
@@ -535,10 +536,10 @@ footer p{font-size:14px;max-width:42ch;margin:0 auto 6px}
         <div class="home-alt" id="screenRecebimentos">
           <div class="alt-h">Últimos recebimentos</div>
           <div class="recv-list">
-            <div class="recv"><span class="recv-dot"></span><div class="recv-b"><small>Recebido em 14/09/25</small><b>Hospital Vera Cruz</b><span class="recv-v">R$ 1.100,00</span><span class="recv-link">Ver Recebimento</span></div></div>
-            <div class="recv"><span class="recv-dot"></span><div class="recv-b"><small>Recebido em 12/09/25</small><b>Hospital Vera Cruz</b><span class="recv-v">R$ 11.000,00</span><span class="recv-link">Ver Recebimento</span></div></div>
-            <div class="recv"><span class="recv-dot"></span><div class="recv-b"><small>Recebido em 09/09/25</small><b>Hospital Vera Cruz</b><span class="recv-v">R$ 12.000,00</span><span class="recv-link">Ver Recebimento</span></div></div>
-            <div class="recv"><span class="recv-dot"></span><div class="recv-b"><small>Recebido em 06/09/25</small><b>Hospital São Vicente</b><span class="recv-v">R$ 7.000,00</span><span class="recv-link">Ver Recebimento</span></div></div>
+            <div class="recv"><div class="recv-date">Recebido em 14/09/25</div><div class="recv-row"><span class="recv-dot"></span><div class="recv-b"><b>Hospital Vera Cruz</b><span class="recv-v">R$ 1.100,00</span><span class="recv-link">Ver Recebimento</span></div></div></div>
+            <div class="recv"><div class="recv-date">Recebido em 12/09/25</div><div class="recv-row"><span class="recv-dot"></span><div class="recv-b"><b>Hospital Vera Cruz</b><span class="recv-v">R$ 11.000,00</span><span class="recv-link">Ver Recebimento</span></div></div></div>
+            <div class="recv"><div class="recv-date">Recebido em 09/09/25</div><div class="recv-row"><span class="recv-dot"></span><div class="recv-b"><b>Hospital Vera Cruz</b><span class="recv-v">R$ 12.000,00</span><span class="recv-link">Ver Recebimento</span></div></div></div>
+            <div class="recv"><div class="recv-date">Recebido em 06/09/25</div><div class="recv-row"><span class="recv-dot"></span><div class="recv-b"><b>Hospital São Vicente</b><span class="recv-v">R$ 7.000,00</span><span class="recv-link">Ver Recebimento</span></div></div></div>
           </div>
         </div>
       </div></div>
