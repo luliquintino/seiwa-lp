@@ -185,24 +185,27 @@ header.nav.scrolled{background:rgba(255,255,255,.82);backdrop-filter:blur(14px);
 .tp-step.hot .n{background:var(--teal);color:#fff;transform:scale(1.06)}
 .pin{position:absolute;left:11%;width:30px;height:30px;border-radius:50%;background:var(--teal);color:var(--navy);font-weight:800;font-family:var(--display);font-size:14px;display:flex;align-items:center;justify-content:center;border:3px solid #fff;box-shadow:0 4px 12px rgba(0,28,65,.3);z-index:3;transform:translate(-50%,-50%);transition:.35s cubic-bezier(.2,.7,.2,1)}
 .pin.active{background:var(--navy);color:var(--teal-bright);transform:translate(-50%,-50%) scale(1.32);box-shadow:0 0 0 6px rgba(0,197,168,.22),0 6px 16px rgba(0,28,65,.3)}
-.acct-screen{position:absolute;inset:0;z-index:5;background:#eef1f4;display:none;flex-direction:column;padding:16px 13px;overflow:hidden;text-align:left;animation:fade .4s ease}
+.acct-screen{position:absolute;inset:0;z-index:5;background:#eef1f4;display:none;flex-direction:column;padding:14px 12px 12px;overflow:hidden;text-align:left;animation:fade .4s ease}
 .scr.show-acct .acct-screen{display:flex}
 .scr.show-acct .pin:not(.acct-pin){opacity:0;pointer-events:none}
 .acct-h{font-family:var(--display);font-weight:800;font-size:15px;color:var(--navy);padding-left:9px;border-left:4px solid var(--teal);margin-bottom:11px}
-.acct-card{background:#fff;border-radius:12px;padding:11px 12px;margin-bottom:13px}
+.acct-card{background:#fff;border-radius:12px;padding:10px 11px;margin-bottom:9px}
 .acct-card b{display:block;font-size:12.5px;color:var(--navy);font-family:var(--display);margin-bottom:4px}
 .acct-card p{font-size:10.5px;color:var(--muted);line-height:1.4}
-.acct-how{font-family:var(--display);font-weight:800;font-size:13px;color:var(--navy);margin-bottom:9px}
-.acct-step{display:flex;gap:9px;margin-bottom:9px}
+.acct-how{font-family:var(--display);font-weight:800;font-size:13px;color:var(--navy);margin-bottom:7px}
+.acct-step{display:flex;gap:9px;margin-bottom:7px}
 .acct-step .sn{width:21px;height:21px;border-radius:50%;background:var(--teal);color:#fff;font-size:10.5px;font-weight:800;font-family:var(--display);display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .acct-step b{display:block;font-size:11.5px;color:var(--navy);font-family:var(--display)}
 .acct-step p{font-size:10px;color:var(--muted);line-height:1.3}
-.acct-note{background:#e3f6ee;border-radius:12px;padding:11px;display:flex;gap:9px;margin-top:auto}
+.acct-note{background:#e3f6ee;border-radius:12px;padding:10px;display:flex;gap:9px;margin-top:6px}
 .acct-note .ic{font-size:17px;line-height:1}
 .acct-note b{display:block;font-size:11.5px;color:var(--teal);font-family:var(--display);margin-bottom:3px}
 .acct-note p{font-size:10px;color:var(--muted);line-height:1.35;margin-bottom:8px}
 .acct-btn{background:var(--teal);color:var(--navy);border:0;border-radius:100px;padding:7px 13px;font-weight:800;font-size:10.5px;cursor:pointer}
 .acct-btn-wrap{position:relative;display:inline-block;margin-top:2px}
+.acct-see{display:flex;justify-content:space-between;align-items:center;font-size:11px;font-weight:700;color:var(--navy);font-family:var(--display);border-top:1px solid rgba(0,28,65,.1);border-bottom:1px solid rgba(0,28,65,.1);padding:9px 2px;margin-top:9px}
+.acct-see span{color:var(--muted)}
+.acct-cta{margin-top:auto;width:100%;background:var(--teal);color:var(--navy);border:0;border-radius:100px;padding:11px;font-weight:800;font-size:12px;font-family:var(--display);cursor:pointer}
 .acct-pin{left:0;top:50%;transform:translate(-50%,-50%) scale(1.12);background:var(--navy);color:var(--teal-bright);box-shadow:0 0 0 6px rgba(0,197,168,.22),0 6px 16px rgba(0,28,65,.35)}
 .tp-feel{margin-top:26px;display:inline-flex;align-items:center;gap:10px;background:var(--navy);color:#fff;border-radius:100px;padding:11px 20px;font-weight:600;font-size:14.5px}
 .tp-feel b{color:var(--lime)}
@@ -698,12 +701,14 @@ footer p{font-size:14px;max-width:42ch;margin:0 auto 6px}
         <div class="device"><div class="scr"><img src="assets/antecipacao.png" alt="Tela de antecipação: simulação do recebimento com valor, parcelas da conciliação e data"><span class="pin" style="top:36%">1</span><span class="pin" style="top:57%">2</span><span class="pin" style="top:90%">3</span>
         <div class="acct-screen">
           <div class="acct-h">Antecipações Seiwa</div>
-          <div class="acct-card"><b>Transforme recebimentos futuros em dinheiro hoje</b><p>Antecipe recebimentos já vencidos e ainda não pagos, ou previstos para os próximos meses.</p></div>
+          <div class="acct-card"><b>Transforme recebimentos futuros em dinheiro hoje</b><p>Você pode antecipar tanto recebimentos já vencidos e ainda não pagos quanto recebimentos previstos para os próximos meses.</p></div>
           <div class="acct-how">Como funciona?</div>
-          <div class="acct-step"><span class="sn">1</span><div><b>Escolha o valor</b><p>Você decide quanto antecipar do saldo disponível.</p></div></div>
-          <div class="acct-step"><span class="sn">2</span><div><b>Simule as condições</b><p>Veja parcelas, datas e o custo antes de confirmar.</p></div></div>
+          <div class="acct-step"><span class="sn">1</span><div><b>Escolha o valor</b><p>Você decide quanto quer antecipar do seu saldo disponível.</p></div></div>
+          <div class="acct-step"><span class="sn">2</span><div><b>Simule as condições</b><p>Veja parcelas, datas e o custo da operação antes de confirmar.</p></div></div>
           <div class="acct-step"><span class="sn">3</span><div><b>Receba na sua conta</b><p>O dinheiro cai rapidamente na conta que você escolher.</p></div></div>
-          <div class="acct-note"><span class="ic">💡</span><div><b>Você precisa de uma conta Seiwa</b><p>É ela que permite a conciliação automática dos recebimentos dos hospitais. Crie a sua para começar.</p><span class="acct-btn-wrap"><button class="acct-btn">Criar conta Seiwa →</button><span class="pin acct-pin">0</span></span></div></div>
+          <div class="acct-note"><span class="ic">💡</span><div><b>Você precisa de uma conta Seiwa</b><p>A conta Seiwa é utilizada apenas para debitar automaticamente suas antecipações. É rápido, fácil e gratuita e só precisa ser feita uma única vez.</p><span class="acct-btn-wrap"><button class="acct-btn">Criar conta Seiwa →</button><span class="pin acct-pin">0</span></span></div></div>
+          <div class="acct-see">Ver minhas antecipações<span>›</span></div>
+          <button class="acct-cta">Simular meu recebimento →</button>
         </div></div></div>
       </div>
     </div>
